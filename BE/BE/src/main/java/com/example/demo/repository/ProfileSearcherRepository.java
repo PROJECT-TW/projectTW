@@ -1,16 +1,12 @@
 package com.example.demo.repository;
 
 import com.example.demo.entity.ProfileSearcher;
-import com.example.demo.entity.Searcher;
+import com.example.demo.entity.Recruiter;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
-public interface ProfileSearcherRepository {
-    List<ProfileSearcher> findAll();
+public interface ProfileSearcherRepository extends JpaRepository<ProfileSearcher, Long > {
 
     ProfileSearcher findByEmail(String email);
-
-    ProfileSearcher save(ProfileSearcher profileSearcherEntity);
 }

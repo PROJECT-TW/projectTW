@@ -16,6 +16,8 @@ public class ProfileSearcherMapper {
         profileSearcher.setId(profileSearcherDto.getId());
         profileSearcher.setFirstName(profileSearcherDto.getFirstName());
         profileSearcher.setLastName(profileSearcherDto.getLastName());
+        profileSearcher.setBirthdayDate(profileSearcherDto.getBirthdayDate());
+
         return profileSearcher;
     }
 
@@ -25,6 +27,8 @@ public class ProfileSearcherMapper {
         profileSearcherDto.setId(profileSearcher.getId());
         profileSearcherDto.setFirstName(profileSearcher.getFirstName());
         profileSearcherDto.setLastName(profileSearcher.getLastName());
+        profileSearcherDto.setBirthdayDate(profileSearcher.getBirthdayDate());
+
         return profileSearcherDto;
     }
 
