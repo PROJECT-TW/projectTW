@@ -15,6 +15,7 @@ public class RecruiterMapper {
         recruiter.setFirstName(recruiterDto.getFirstName());
         recruiter.setLastName(recruiterDto.getLastName());
         recruiter.setId(recruiterDto.getId());
+        recruiter.setPassword(recruiterDto.getPassword());
         recruiter.setOrganization(recruiterDto.getOrganization());
         return recruiter;
     }
@@ -25,6 +26,7 @@ public class RecruiterMapper {
         recruiterDto.setId(recruiter.getId());
         recruiterDto.setFirstName(recruiter.getFirstName());
         recruiterDto.setLastName(recruiter.getLastName());
+        recruiterDto.setPassword(recruiter.getPassword());
         recruiterDto.setOrganization(recruiter.getOrganization());
         return recruiterDto;
     }

@@ -1,8 +1,6 @@
 package com.example.demo.services;
 
 import com.example.demo.dtos.RecruiterDto;
-import com.example.demo.dtos.RecruiterDto;
-import com.example.demo.entity.Recruiter;
 import com.example.demo.entity.Recruiter;
 import com.example.demo.exceptions.CustomException;
 import com.example.demo.mapper.RecruiterMapper;
