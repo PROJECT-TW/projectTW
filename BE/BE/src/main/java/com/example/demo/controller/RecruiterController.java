@@ -14,12 +14,14 @@ public class RecruiterController {
     RecruiterService recruiterService;
 
     @GetMapping(value = "/allRecruiters")
+    @CrossOrigin("192.168.1.254:4200")
     public List<RecruiterDto> getAllRecruiters() {
 
         return recruiterService.getAllRecruiters();
     }
 
     @PostMapping(value = "/addRecruiter")
+    @CrossOrigin("192.168.1.254:4200")
     public ResponseEntity<RecruiterDto> addRecruiter(@RequestBody RecruiterDto recruiterDto) {
         RecruiterDto addedRecruiterDto = RecruiterService.addRecruiter(recruiterDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(addedRecruiterDto);
@@ -32,6 +34,7 @@ public class RecruiterController {
 //
 
     @GetMapping(value = "/getRecruiterByEmail/{email}")
+    @CrossOrigin("192.168.1.254:4200")
     public RecruiterDto getRecruiterByEmail(@PathVariable String email) {
         return recruiterService.getRecruiterByEmail(email);
     }
