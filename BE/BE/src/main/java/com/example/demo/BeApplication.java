@@ -2,6 +2,7 @@ package com.example.demo;
 
 import com.example.demo.entity.*;
 import com.example.demo.repository.RecruiterRepository;
+import com.example.demo.repository.SearcherRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -13,9 +14,9 @@ public class BeApplication {
 		ConfigurableApplicationContext configurableApplicationContext =
 				SpringApplication.run(BeApplication.class, args);
 
-		RecruiterRepository recruiterRepository=configurableApplicationContext.getBean(RecruiterRepository.class);
-Recruiter teacher=new Recruiter("email13","lastname","firstname","pass","organization");
-		recruiterRepository.save(teacher);
+//		SearcherRepository recruiterRepository=configurableApplicationContext.getBean(SearcherRepository.class);
+//Searcher teacher=new Searcher("email19","lastname","firstname","pass");
+//		recruiterRepository.save(teacher);
 
 	}
 
