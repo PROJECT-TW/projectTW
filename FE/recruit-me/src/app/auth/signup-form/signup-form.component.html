@@ -1,16 +1,20 @@
 <form #registerForm="ngForm" (submit)="signUp(registerForm)">
     <p class="title">Register</p><br><br>
     <p class="label">First name</p>
-    <input type="text" name="firstName" #firstName ngModel><br><br>
+    <input type="text" name="firstName" #firstName ngModel required><br><br>
     <p class="label">Last name</p>
-    <input type="text" name="lastName" #lastName ngModel><br><br>
+    <input type="text" name="lastName" #lastName ngModel required><br><br>
     <p class="label">Email</p>
-    <input type="text" name="email" #email><br><br>
+    <input type="text" name="email" #email ngModel required><br><br>
+    <p class="label">Organization</p>
+    <input type="text" name="organization" #organization ngModel required><br><br>
     <p class="label">Password</p>
-    <input type="password" name="password" #password autocomplete="of" ngModel><br><br>
+    <input type="password" name="password" #password autocomplete="of" ngModel required><br><br>
     <p class="label">Re-type password</p>
-    <input type="password" name="password2" #password2 autocomplete="of" ngModel><br><br>
-    <button class="btn" type="submit">Sign Up</button><br><br>
+    <input type="password" name="password2" #password2 autocomplete="of" ngModel required><br>
+    <label for="recruiter">Recruiter</label>
+    <input type="checkbox" name="recruiter" #recruiter ngModel required><br><br>
+    <button class="btn" type="submit" [disabled]="!registerForm.valid">Sign Up</button><br><br>
     <p>Already have an account? <b (click)="onToggle()">Log in.</b></p>
 </form>
 

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { UiService } from '../ui.service';
+import { AuthService } from '../services/auth.service';
+import { UiService } from '../services/ui.service';
 
 @Component({
   selector: 'app-signup-form',
@@ -7,7 +8,7 @@ import { UiService } from '../ui.service';
   styleUrls: ['./signup-form.component.scss']
 })
 export class SignupFormComponent implements OnInit {
-  constructor(private uiService : UiService) { }
+  constructor(private uiService : UiService,private authService : AuthService) { }
 
   ngOnInit(): void {
   }
@@ -17,7 +18,18 @@ export class SignupFormComponent implements OnInit {
   }
 
   signUp(form : any){
-    console.log(form)
+    const x = form.controls;
+    const signUpForm = {
+      firstName : x.firstName.value,
+      lastName : x.lastName.value,
+      organization : x.organization.value,
+      email : x.email.value,
+      password : x.password.value,
+      password2 : x.password2.value,
+      recruiter: x.recruiter.value?true:false
+    }
+    console.log(signUpForm)
+    //this.authService.signUp()
   }
 
 }
