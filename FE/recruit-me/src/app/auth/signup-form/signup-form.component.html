@@ -1,0 +1,16 @@
+<form #registerForm="ngForm" (submit)="signUp(registerForm)">
+    <p class="title">Register</p><br><br>
+    <p class="label">First name</p>
+    <input type="text" name="firstName" #firstName ngModel><br><br>
+    <p class="label">Last name</p>
+    <input type="text" name="lastName" #lastName ngModel><br><br>
+    <p class="label">Email</p>
+    <input type="text" name="email" #email><br><br>
+    <p class="label">Password</p>
+    <input type="password" name="password" #password autocomplete="of" ngModel><br><br>
+    <p class="label">Re-type password</p>
+    <input type="password" name="password2" #password2 autocomplete="of" ngModel><br><br>
+    <button class="btn" type="submit">Sign Up</button><br><br>
+    <p>Already have an account? <b (click)="onToggle()">Log in.</b></p>
+</form>
+

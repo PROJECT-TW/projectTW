@@ -1,0 +1,92 @@
+.container{
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 50px;
+}
+
+.job-box{
+    border-radius: 4px;
+    padding: 20px;
+    box-shadow: 0 0 2px #c4c7cc;
+    display: flex;
+    justify-content: space-between;
+}
+.section-1{
+    display: flex;
+    gap: 20px;
+    .left{
+        width:calc(70% - 10px)
+    }
+    .right{
+        height: 300px;
+        border-radius: 4px;
+        padding: 20px;
+        box-shadow: 0 0 2px #c4c7cc;
+        width:calc(30% - 10px);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .job-boxes-container{
+        margin-top: 25px;
+        display: grid;
+        gap: 10px;
+        grid-template-columns: minmax(200px, 1fr) minmax(200px, 1fr);
+        grid-auto-rows: 1fr;
+    }
+    .text .title{
+        font-weight: 900;
+        font-size: 24px;
+        margin-bottom: 10px;      
+    }
+    .text .subtitle{
+        color: var(--color2);
+        font-size: 16px;
+    }
+}
+
+.job-box{
+    height: 150px;
+    cursor: pointer;
+    .company{
+        color: var(--color2);
+    }
+    .title{
+        font-weight: 600;
+        line-height: 20px;
+    }
+    .location{
+        font-size: 14px;
+        color: var(--color2);
+    }
+}
+
+.profile-box{
+    .head{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        .name{
+            font-weight: 900;
+        }
+        .email{
+            font-size: 14px;
+            color: var(--color2);
+        }
+    }
+    .mid{
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .line{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+    }
+
+}
