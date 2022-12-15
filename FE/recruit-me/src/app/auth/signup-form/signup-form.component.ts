@@ -29,7 +29,12 @@ export class SignupFormComponent implements OnInit {
       recruiter: x.recruiter.value?true:false
     }
     console.log(signUpForm)
-    //this.authService.signUp()
+    
+    this.authService.signUp(signUpForm).subscribe(
+      res =>{
+        console.log(res)
+      }
+    )
   }
 
 }
