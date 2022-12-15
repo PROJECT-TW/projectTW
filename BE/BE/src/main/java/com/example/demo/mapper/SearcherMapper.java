@@ -14,6 +14,7 @@ public class SearcherMapper {
         Searcher searcher=new Searcher();
         searcher.setEmail(searcherDto.getEmail());
         searcher.setId(searcherDto.getId());
+        searcher.setType(searcherDto.getType());
         searcher.setFirstName(searcherDto.getFirstName());
         searcher.setLastName(searcherDto.getLastName());
         searcher.setPassword(searcherDto.getPassword());
@@ -24,6 +25,7 @@ public class SearcherMapper {
         SearcherDto searcherDto=new SearcherDto();
         searcherDto.setEmail(searcher.getEmail());
         searcherDto.setId(searcher.getId());
+        searcherDto.setType(searcher.getType());
         searcherDto.setFirstName(searcher.getFirstName());
         searcherDto.setLastName(searcher.getLastName());
         searcherDto.setPassword(searcher.getPassword());

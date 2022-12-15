@@ -22,11 +22,15 @@ public  class User  {
 
     @Column(name = "password", nullable = false)
     private String password;
-    public User(String email, String lastName, String firstName, String password) {
+
+    @Column(name = "typeOfAccount", nullable = false)
+    private String type;
+    public User(String email, String lastName, String firstName, String password, String type) {
         this.email=email;
         this.lastName=lastName;
         this.firstName=firstName;
         this.password=password;
+        this.type=type;
     }
 
     public User() {
@@ -70,5 +74,13 @@ public  class User  {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
