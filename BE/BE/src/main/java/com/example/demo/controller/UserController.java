@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-public class RecruiterController {
+public class UserController {
 
     @Autowired
     RecruiterService recruiterService;

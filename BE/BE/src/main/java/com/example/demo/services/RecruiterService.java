@@ -56,7 +56,7 @@ public class RecruiterService {
         while (iterator.hasNext()) {
             recruiterDtoInUse = iterator.next();
             if (recruiterDtoInUse.getEmail().equals(userDto.getEmail()) &&
-                    recruiterDtoInUse.getEmail().equals(userDto.getEmail())) {
+                    recruiterDtoInUse.getPassword().equals(userDto.getPassword())) {
                 Recruiter recruiterEntity = RecruiterMapper.toEntity(recruiterDtoInUse);
                 return (T) RecruiterMapper.toDto(recruiterRepository.save(recruiterEntity));
                            }
@@ -68,7 +68,7 @@ public class RecruiterService {
         while (iterator1.hasNext()) {
             searcherDtoInUse = iterator1.next();
             if (searcherDtoInUse.getEmail().equals(userDto.getEmail()) &&
-                    searcherDtoInUse.getEmail().equals(userDto.getEmail())) {
+                    searcherDtoInUse.getPassword().equals(userDto.getPassword())) {
                 Searcher searcherEntity = SearcherMapper.toEntity(searcherDtoInUse);
                 return (T) SearcherMapper.toDto(searcherRepository.save(searcherEntity));
             }
