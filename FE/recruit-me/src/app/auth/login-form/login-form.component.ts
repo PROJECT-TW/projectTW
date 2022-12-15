@@ -24,7 +24,6 @@ export class LoginFormComponent implements OnInit {
       password : form.controls.password.value,
     }
     console.log(loginForm)
-    //
     this.authService.login(loginForm)
   }
 

@@ -30,11 +30,19 @@ export class SignupFormComponent implements OnInit {
     }
     console.log(signUpForm)
     
-    this.authService.signUp(signUpForm).subscribe(
+    if(x.recruiter === true)
+    this.authService.signUpRecruiter(signUpForm).subscribe(
       res =>{
         console.log(res)
       }
     )
+    else
+    this.authService.signUpSearcher(signUpForm).subscribe(
+      res =>{
+        console.log(res)
+      }
+    )
+    
   }
 
 }

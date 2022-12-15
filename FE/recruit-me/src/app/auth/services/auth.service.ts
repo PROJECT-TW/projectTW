@@ -5,17 +5,30 @@ import { HttpClient } from '@angular/common/http'
   providedIn: 'root'
 })
 export class AuthService {
-
+  private user: any = null;
   constructor(private http: HttpClient) { }
 
   getLoginStatus(){
-    return true;
+    return this.user?true:false
   }
 
-  signUp(signupForm : any) {
-    return this.http.post<any>("http://localhost:8090/users",signupForm);
+  signUpSearcher(signupForm : any) {
+    return this.http.post<any>("http://localhost:8090/addSearcher",signupForm);
   }
+
+  signUpRecruiter(signupForm : any) {
+    return this.http.post<any>("http://localhost:8090/addRecruiter",signupForm);
+  }
+
   login(loginForm : any) {
-    return this.http.post<any>("http://localhost:8090/users",loginForm);
+    return this.http.post<any>("http://localhost:8090/login",loginForm).subscribe(
+      res =>{
+        console.log(res);
+        this.user = res;
+      },
+      err =>{
+        console.log(err)
+      }
+    );
   }
 }

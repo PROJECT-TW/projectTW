@@ -13,7 +13,7 @@
     <p class="label">Re-type password</p>
     <input type="password" name="password2" #password2 autocomplete="of" ngModel required><br>
     <label for="recruiter">Recruiter</label>
-    <input type="checkbox" name="recruiter" #recruiter ngModel required><br><br>
+    <input type="checkbox" name="recruiter" #recruiter ngModel><br><br>
     <button class="btn" type="submit" [disabled]="!registerForm.valid">Sign Up</button><br><br>
     <p>Already have an account? <b (click)="onToggle()">Log in.</b></p>
 </form>
