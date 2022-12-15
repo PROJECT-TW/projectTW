@@ -28,7 +28,6 @@ export class SignupFormComponent implements OnInit {
       password2 : x.password2.value,
       recruiter: x.recruiter.value?true:false
     }
-    console.log(signUpForm)
     
     if(x.recruiter === true)
     this.authService.signUpRecruiter(signUpForm).subscribe(
@@ -37,7 +36,7 @@ export class SignupFormComponent implements OnInit {
       }
     )
     else
-    this.authService.signUpSearcher(signUpForm).subscribe(
+    this.authService.signUpApplicant(signUpForm).subscribe(
       res =>{
         console.log(res)
       }
