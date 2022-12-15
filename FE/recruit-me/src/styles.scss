@@ -4,6 +4,7 @@
 :root {
     --color1: #6320ee;
     --color2: #505863;
+    --color3: #8075ff;
 }
  
 *{
@@ -22,7 +23,7 @@ textarea, input[type=text],input[type=password]{
 
 .btn{
     border: none;
-    background-color: #6320ee;
+    background-color: var(--color1);
     padding: 10px 30px;
     border-radius: 4px;
     color: white;
