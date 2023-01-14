@@ -9,10 +9,10 @@ public class UserDto {
     private String password;
 
     private String password2;
-    private String type;
+    private boolean type;
 
 
-    public UserDto(String email,String lastName, String firstName,String password, String password2, String type) {
+    public UserDto(String email,String lastName, String firstName,String password, String password2, boolean type) {
         this.email = email;
         this.lastName=lastName;
         this.firstName=firstName;
@@ -68,11 +68,11 @@ public class UserDto {
         this.password = password;
     }
 
-    public String getType() {
+    public boolean getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(boolean type) {
         this.type = type;
     }
 

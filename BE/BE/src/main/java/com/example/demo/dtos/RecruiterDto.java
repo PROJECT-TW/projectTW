@@ -12,7 +12,7 @@ public class RecruiterDto extends UserDto{
         super();
     }
 
-    public RecruiterDto(String email,String lastName, String firstName,String password,  String password2,String type, String organization) {
+    public RecruiterDto(String email,String lastName, String firstName,String password,  String password2,boolean type, String organization) {
         super(email,lastName,firstName, password, password2, type);
         this.organization=organization;
     }

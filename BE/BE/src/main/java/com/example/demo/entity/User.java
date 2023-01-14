@@ -24,8 +24,8 @@ public  class User  {
     private String password;
 
     @Column(name = "typeOfAccount", nullable = false)
-    private String type;
-    public User(String email, String lastName, String firstName, String password, String type) {
+    private boolean type;
+    public User(String email, String lastName, String firstName, String password, boolean type) {
         this.email=email;
         this.lastName=lastName;
         this.firstName=firstName;
@@ -76,11 +76,11 @@ public  class User  {
         this.password = password;
     }
 
-    public String getType() {
+    public boolean getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(boolean type) {
         this.type = type;
     }
 }

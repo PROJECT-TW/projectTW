@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "searchers")
 public class Searcher extends User{
-    public Searcher(String email,String lastName, String firstName, String password, String type) {
+    public Searcher(String email,String lastName, String firstName, String password, boolean type) {
         super(email,lastName,firstName, password,type);
 
     }

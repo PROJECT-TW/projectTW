@@ -1,6 +1,8 @@
 package com.example.demo.mapper;
 
+import com.example.demo.dtos.RecruiterDto;
 import com.example.demo.dtos.SearcherDto;
+import com.example.demo.dtos.SignUpFormDto;
 import com.example.demo.entity.Searcher;
 import org.springframework.stereotype.Component;
 
@@ -32,6 +34,16 @@ public class SearcherMapper {
         return searcherDto;
     }
 
+    public static SearcherDto signUpToSerarcherDto(SignUpFormDto signUpFormDto){
+        SearcherDto searcherDto=new SearcherDto();
+        searcherDto.setEmail(signUpFormDto.getEmail());
+        searcherDto.setId(signUpFormDto.getId());
+        searcherDto.setType(signUpFormDto.getType());
+        searcherDto.setFirstName(signUpFormDto.getFirstName());
+        searcherDto.setLastName(signUpFormDto.getLastName());
+        searcherDto.setPassword(signUpFormDto.getPassword());
+        return searcherDto;
+    }
     public static List<SearcherDto> toDtoList(List<Searcher> searcherList){
         List<SearcherDto> searcherDtoList=new ArrayList<>();
         Iterator<Searcher> it = searcherList.iterator();

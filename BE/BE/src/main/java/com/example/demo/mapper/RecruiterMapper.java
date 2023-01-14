@@ -1,6 +1,7 @@
 package com.example.demo.mapper;
 
 import com.example.demo.dtos.RecruiterDto;
+import com.example.demo.dtos.SignUpFormDto;
 import com.example.demo.entity.Recruiter;
 import org.springframework.stereotype.Component;
 
@@ -30,6 +31,18 @@ public class RecruiterMapper {
         recruiterDto.setLastName(recruiter.getLastName());
         recruiterDto.setPassword(recruiter.getPassword());
         recruiterDto.setOrganization(recruiter.getOrganization());
+        return recruiterDto;
+    }
+
+    public static RecruiterDto signUpToRecruiterDto(SignUpFormDto signUpFormDto){
+        RecruiterDto recruiterDto=new RecruiterDto();
+        recruiterDto.setEmail(signUpFormDto.getEmail());
+        recruiterDto.setId(signUpFormDto.getId());
+        recruiterDto.setType(signUpFormDto.getType());
+        recruiterDto.setFirstName(signUpFormDto.getFirstName());
+        recruiterDto.setLastName(signUpFormDto.getLastName());
+        recruiterDto.setPassword(signUpFormDto.getPassword());
+        recruiterDto.setOrganization(signUpFormDto.getOrganization());
         return recruiterDto;
     }
 
