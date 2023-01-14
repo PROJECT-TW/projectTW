@@ -39,6 +39,7 @@ export class SignupFormComponent implements OnInit {
     this.authService.signUpApplicant(signUpForm).subscribe(
       res =>{
         console.log(res)
+        this.authService.login({email:res.email,password:res.password})
       }
     )
     

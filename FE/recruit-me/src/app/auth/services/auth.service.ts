@@ -16,21 +16,21 @@ export class AuthService {
     //return 'recruiter';
     return 'applicant'
   }
-  
+
   getUser(){
     return this.user
   }
 
   signUpApplicant(signupForm : any) {
-    return this.http.post<any>("http://localhost:8090/addSearcher",signupForm);
+    return this.http.post<any>("http://localhost:8091/addSearcher",signupForm);
   }
 
   signUpRecruiter(signupForm : any) {
-    return this.http.post<any>("http://localhost:8090/addRecruiter",signupForm);
+    return this.http.post<any>("http://localhost:8091/addRecruiter",signupForm);
   }
 
   login(loginForm : any) {
-    return this.http.post<any>("http://localhost:8090/login",loginForm).subscribe(
+    return this.http.post<any>("http://localhost:8091/login",loginForm).subscribe(
       res =>{
         this.user = res;
         this.router.navigate(['']);

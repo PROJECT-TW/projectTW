@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-job-box',
@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./job-box.component.scss']
 })
 export class JobBoxComponent implements OnInit {
-
+  @Input() jobPreview : any = {};
+  isFav : boolean = false;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  addToFav(){
+    console.log('http sent');
+    this.isFav = !this.isFav
   }
 
 }

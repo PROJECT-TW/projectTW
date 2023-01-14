@@ -1,0 +1,21 @@
+.job-box{
+    border-radius: 4px;
+    padding: 20px;
+    box-shadow: 0 0 2px #c4c7cc;
+    display: flex;
+    justify-content: space-between;
+
+    height: 150px;
+    cursor: pointer;
+    .company{
+        color: var(--color2);
+    }
+    .title{
+        font-weight: 600;
+        line-height: 20px;
+    }
+    .location{
+        font-size: 14px;
+        color: var(--color2);
+    }
+}

@@ -1,6 +1,6 @@
 <div class="container">
     <div class="logo-container">
-        <p class="logo-text">Recruit<span style="color: black;">Me!</span></p>
+        <p class="logo-text" routerLink="dashboard" style="cursor: pointer;">Recruit<span style="color: black;">Me!</span></p>
     </div>
     <div class="search-container">
         <input type="text" id="search-job" placeholder="Search for job titles">
@@ -8,7 +8,7 @@
         <button class="btn"><img style="width: 16px;" src="assets/icons/search.png" alt=""></button>
     </div>
     <div class="options-container">
-        <img style="width: 20px;" src="assets/icons/user.png" alt="">
-        <img style="width: 20px;" src="assets/icons/love.png" alt="">
+        <img style="width: 20px; cursor: pointer;" src="assets/icons/user.png" alt="" routerLink="/account">
+        <img style="width: 20px; cursor: pointer;" src="assets/icons/love.png" routerLink="/favourite" alt="" >
     </div>
 </div>

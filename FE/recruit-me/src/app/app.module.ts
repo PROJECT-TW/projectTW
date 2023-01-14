@@ -16,6 +16,10 @@ import { SignupFormComponent } from './auth/signup-form/signup-form.component';
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ProfileBoxComponent } from './shared/components/profile-box/profile-box.component';
+import { AccountComponent } from './account/account.component';
+import { AccountRecruiterComponent } from './account/account-recruiter/account-recruiter.component';
+import { AccountApplicantComponent } from './account/account-applicant/account-applicant.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +33,11 @@ import { HttpClientModule } from '@angular/common/http';
     JobBoxComponent,
     AuthComponent,
     LoginFormComponent,
-    SignupFormComponent
+    SignupFormComponent,
+    ProfileBoxComponent,
+    AccountComponent,
+    AccountRecruiterComponent,
+    AccountApplicantComponent,
   ],
   imports: [
     BrowserModule,
