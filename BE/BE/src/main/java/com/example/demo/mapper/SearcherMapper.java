@@ -1,6 +1,8 @@
 package com.example.demo.mapper;
 
+import com.example.demo.dtos.RecruiterDto;
 import com.example.demo.dtos.SearcherDto;
+import com.example.demo.dtos.SignUpFormDto;
 import com.example.demo.entity.Searcher;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +16,7 @@ public class SearcherMapper {
         Searcher searcher=new Searcher();
         searcher.setEmail(searcherDto.getEmail());
         searcher.setId(searcherDto.getId());
+        searcher.setType(searcherDto.getType());
         searcher.setFirstName(searcherDto.getFirstName());
         searcher.setLastName(searcherDto.getLastName());
         searcher.setPassword(searcherDto.getPassword());
@@ -24,12 +27,23 @@ public class SearcherMapper {
         SearcherDto searcherDto=new SearcherDto();
         searcherDto.setEmail(searcher.getEmail());
         searcherDto.setId(searcher.getId());
+        searcherDto.setType(searcher.getType());
         searcherDto.setFirstName(searcher.getFirstName());
         searcherDto.setLastName(searcher.getLastName());
         searcherDto.setPassword(searcher.getPassword());
         return searcherDto;
     }
 
+    public static SearcherDto signUpToSerarcherDto(SignUpFormDto signUpFormDto){
+        SearcherDto searcherDto=new SearcherDto();
+        searcherDto.setEmail(signUpFormDto.getEmail());
+        searcherDto.setId(signUpFormDto.getId());
+        searcherDto.setType(signUpFormDto.getType());
+        searcherDto.setFirstName(signUpFormDto.getFirstName());
+        searcherDto.setLastName(signUpFormDto.getLastName());
+        searcherDto.setPassword(signUpFormDto.getPassword());
+        return searcherDto;
+    }
     public static List<SearcherDto> toDtoList(List<Searcher> searcherList){
         List<SearcherDto> searcherDtoList=new ArrayList<>();
         Iterator<Searcher> it = searcherList.iterator();

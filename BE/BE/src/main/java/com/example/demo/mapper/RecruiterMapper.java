@@ -1,6 +1,7 @@
 package com.example.demo.mapper;
 
 import com.example.demo.dtos.RecruiterDto;
+import com.example.demo.dtos.SignUpFormDto;
 import com.example.demo.entity.Recruiter;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +16,7 @@ public class RecruiterMapper {
         recruiter.setFirstName(recruiterDto.getFirstName());
         recruiter.setLastName(recruiterDto.getLastName());
         recruiter.setId(recruiterDto.getId());
+        recruiter.setType(recruiterDto.getType());
         recruiter.setPassword(recruiterDto.getPassword());
         recruiter.setOrganization(recruiterDto.getOrganization());
         return recruiter;
@@ -24,10 +26,23 @@ public class RecruiterMapper {
         RecruiterDto recruiterDto=new RecruiterDto();
         recruiterDto.setEmail(recruiter.getEmail());
         recruiterDto.setId(recruiter.getId());
+        recruiterDto.setType(recruiter.getType());
         recruiterDto.setFirstName(recruiter.getFirstName());
         recruiterDto.setLastName(recruiter.getLastName());
         recruiterDto.setPassword(recruiter.getPassword());
         recruiterDto.setOrganization(recruiter.getOrganization());
+        return recruiterDto;
+    }
+
+    public static RecruiterDto signUpToRecruiterDto(SignUpFormDto signUpFormDto){
+        RecruiterDto recruiterDto=new RecruiterDto();
+        recruiterDto.setEmail(signUpFormDto.getEmail());
+        recruiterDto.setId(signUpFormDto.getId());
+        recruiterDto.setType(signUpFormDto.getType());
+        recruiterDto.setFirstName(signUpFormDto.getFirstName());
+        recruiterDto.setLastName(signUpFormDto.getLastName());
+        recruiterDto.setPassword(signUpFormDto.getPassword());
+        recruiterDto.setOrganization(signUpFormDto.getOrganization());
         return recruiterDto;
     }
 

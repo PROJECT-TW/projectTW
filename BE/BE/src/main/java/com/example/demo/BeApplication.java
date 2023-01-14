@@ -17,7 +17,7 @@ public class BeApplication {
 				SpringApplication.run(BeApplication.class, args);
 
 //		SearcherRepository recruiterRepository=configurableApplicationContext.getBean(SearcherRepository.class);
-//Searcher teacher=new Searcher("email19","lastname","firstname","pass");
+//Searcher teacher=new Searcher("email19","lastname","firstname","pass",false);
 //		recruiterRepository.save(teacher);
 
 	}

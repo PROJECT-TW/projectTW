@@ -3,7 +3,7 @@ package com.example.demo.dtos;
 import javax.persistence.Column;
 import java.util.Date;
 
-public class ProfileSearcherDto {
+public class ProfileSearcherDto extends UserDto{
     private Long id;
 
     private String email;
