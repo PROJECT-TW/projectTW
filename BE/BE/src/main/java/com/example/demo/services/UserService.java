@@ -163,23 +163,6 @@ public class UserService {
         }
         return null;
     }
-//
-//    public UserDto getUserById(int id) {
-//        List<User> users = userRepository.findAll();
-//        List<UserDto> userDtoList = UserMapper.toDtoList(users);
-//        Iterator<UserDto> iterator = userDtoList.iterator();
-//        UserDto userDto = new UserDto();
-//        while (iterator.hasNext()) {
-//            userDto = iterator.next();
-//            //System.out.println(id + " si " + userDto.getId());
-//
-//            if (userDto.getId() == (long) id) {
-//                // System.out.println(id + " si " + userDto.getId());
-//                return userDto;
-//            }
-//        }
-//        return null;
-//    }
 
     public RecruiterDto getRecruiterByEmail(String email) {
         List<Recruiter> recruiters = recruiterRepository.findAll();
