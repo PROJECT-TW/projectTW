@@ -20,6 +20,9 @@ public class SearcherMapper {
         searcher.setFirstName(searcherDto.getFirstName());
         searcher.setLastName(searcherDto.getLastName());
         searcher.setPassword(searcherDto.getPassword());
+        searcher.setLocation(searcherDto.getLocation());
+        searcher.setPhone(searcherDto.getPhone());
+        searcher.setOcupation(searcherDto.getOcupation());
         return searcher;
     }
 
@@ -31,6 +34,9 @@ public class SearcherMapper {
         searcherDto.setFirstName(searcher.getFirstName());
         searcherDto.setLastName(searcher.getLastName());
         searcherDto.setPassword(searcher.getPassword());
+        searcherDto.setLocation(searcher.getLocation());
+        searcherDto.setPhone(searcher.getPhone());
+        searcherDto.setOcupation(searcher.getOcupation());
         return searcherDto;
     }
 

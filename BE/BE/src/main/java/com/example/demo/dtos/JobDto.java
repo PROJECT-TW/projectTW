@@ -1,4 +1,6 @@
 package com.example.demo.dtos;
+import javax.persistence.Column;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -6,14 +8,16 @@ public class JobDto {
     private Long id;
     private String title;
     private String description;
-    private LocalDateTime postDate;
+    private LocalDate postDate;
+    private String owner;
 
-    public JobDto(String title, String description) {
+    private String location;
+
+    public JobDto(String title, String description, String owner, String location) {
         this.title = title;
         this.description = description;
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-        LocalDateTime now = LocalDateTime.now();
-        this.postDate = now;
+        this.owner=owner;
+        this.location=location;
     }
     public JobDto() {
     }
@@ -39,14 +43,31 @@ public class JobDto {
     }
 
     public void setDescription(String description) {
+
         this.description = description;
     }
 
-    public LocalDateTime getPostDate() {
+    public LocalDate getPostDate() {
         return postDate;
     }
 
-    public void setPostDate(LocalDateTime postDate) {
+    public void setPostDate(LocalDate postDate) {
         this.postDate = postDate;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }
