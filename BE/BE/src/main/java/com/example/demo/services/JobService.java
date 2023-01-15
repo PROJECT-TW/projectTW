@@ -66,7 +66,10 @@ public class JobService {
                 jobDtoListWithLocation.add(jobDto);
             }
         }
-        return pickNRandomElements(jobDtoListWithLocation,4);
+        if(jobDtoListWithLocation.size()>4)
+            return pickNRandomElements(jobDtoListWithLocation,4);
+        else
+            return pickNRandomElements(jobDtoListWithLocation,jobDtoListWithLocation.size());
     }
 
     public static <E> List<E> pickNRandomElements(List<E> list, int n, Random r) {
