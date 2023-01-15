@@ -17,26 +17,35 @@ public class JobController {
     JobService jobService;
 
     @GetMapping(value = "/allJobs")
-    @CrossOrigin("192.168.1.254:4200")
+    @CrossOrigin("http://localhost:4200")
     public List<JobDto> getAllJobs() {
 
         return jobService.getAllJobs();
     }
 
     @PostMapping(value = "/addJob")
-   @CrossOrigin("192.168.1.254:4200")
+    @CrossOrigin("http://localhost:4200")
     public ResponseEntity<JobDto> addJob(@RequestBody JobDto jobDto) {
         JobDto addedJobDto = JobService.addJob(jobDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(addedJobDto);
     }
 
     @GetMapping(value = "/getRandomJobs/{location}")
+    @CrossOrigin("http://localhost:4200")
     public List<JobDto> getRandomJobs(@PathVariable String location) {
         return jobService.getFourJobs(location);
     }
 
     @GetMapping(value = "/getJobById/{id}")
+    @CrossOrigin("http://localhost:4200")
     public JobDto getJobById(@PathVariable Long id) {
         return jobService.getJobById(id);
     }
+
+    @GetMapping(value = "/getFilteredJobs")
+    @CrossOrigin("http://localhost:4200")
+    public List<JobDto> getRandomJobs(@RequestBody JobDto jobDto) {
+        return jobService.getFilteredJobs(jobDto);
+    }
+
 }

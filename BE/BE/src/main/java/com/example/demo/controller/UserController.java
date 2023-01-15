@@ -55,12 +55,13 @@ public class UserController {
     }
 
     @PostMapping(value = "/login")
-    //@CrossOrigin("http://localhost:4200")
+    @CrossOrigin("http://localhost:4200")
     public <T> ResponseEntity<T> login(@RequestBody UserDto userL) {
             return ResponseEntity.status(HttpStatus.CREATED).body(UserService.login(userL));
     }
 
     @GetMapping(value = "/getRecruiterByEmail/{email}")
+    @CrossOrigin("http://localhost:4200")
     public RecruiterDto getRecruiterByEmail(@PathVariable String email) {
         return userService.getRecruiterByEmail(email);
     }
@@ -73,16 +74,19 @@ public class UserController {
     }
 
     @GetMapping(value = "/getSearcherByEmail/{email}")
+    @CrossOrigin("http://localhost:4200")
     public SearcherDto getSearcherByEmail(@PathVariable String email) {
         return userService.getSearcherByEmail(email);
     }
 
     @GetMapping(value = "/getSearcherById/{id}")
+    @CrossOrigin("http://localhost:4200")
     public SearcherDto getSearcherById(@PathVariable Long id) {
         return userService.getSearcherById(id);
     }
 
     @PutMapping(value = "/updateProfile")
+    @CrossOrigin("http://localhost:4200")
     public <T> ResponseEntity<T> updateProfile(@RequestBody SignUpFormDto userDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(UserService.updateUserData(userDto));
     }
