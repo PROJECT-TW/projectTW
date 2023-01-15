@@ -55,7 +55,7 @@ public class UserController {
     }
 
     @PostMapping(value = "/login")
-    @CrossOrigin("http://localhost:4200")
+    //@CrossOrigin("http://localhost:4200")
     public <T> ResponseEntity<T> login(@RequestBody UserDto userL) {
             return ResponseEntity.status(HttpStatus.CREATED).body(UserService.login(userL));
     }

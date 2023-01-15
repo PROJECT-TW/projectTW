@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -20,15 +21,20 @@ public class Job {
     @Column(name = "description", nullable = false)
     private String description;
 
-    @Column(name = "postDate", nullable = false)
-    private LocalDateTime postDate;
+    @Column(name = "postDate", nullable = true)
+    private LocalDate postDate;
 
-    public Job(String title, String description) {
+    @Column(name = "owner", nullable = false)
+    private String owner;
+
+    @Column(name = "location", nullable = false)
+    private String location;
+
+    public Job(String title, String description, String owner, String location) {
         this.title = title;
         this.description = description;
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-        LocalDateTime now = LocalDateTime.now();
-        this.postDate = now;
+        this.owner=owner;
+        this.location=location;
     }
     public Job() {
     }
@@ -57,11 +63,27 @@ public class Job {
         this.description = description;
     }
 
-    public LocalDateTime getPostDate() {
+    public LocalDate getPostDate() {
         return postDate;
     }
 
-    public void setPostDate(LocalDateTime postDate) {
+    public void setPostDate(LocalDate postDate) {
         this.postDate = postDate;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

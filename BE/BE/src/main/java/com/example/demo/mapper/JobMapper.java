@@ -17,7 +17,8 @@ public class JobMapper {
         job.setPostDate(jobDto.getPostDate());
         job.setTitle(jobDto.getTitle());
         job.setId(jobDto.getId());
-
+        job.setLocation(jobDto.getLocation());
+        job.setOwner(jobDto.getOwner());
         return job;
     }
 
@@ -27,6 +28,8 @@ public class JobMapper {
         jobDto.setDescription(job.getDescription());
         jobDto.setPostDate(job.getPostDate());
         jobDto.setTitle(job.getTitle());
+        jobDto.setLocation(job.getLocation());
+        jobDto.setOwner(job.getOwner());
         return jobDto;
     }
 
