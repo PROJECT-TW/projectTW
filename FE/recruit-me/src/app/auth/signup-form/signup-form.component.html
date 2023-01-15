@@ -6,15 +6,17 @@
     <input type="text" name="lastName" #lastName ngModel required><br><br>
     <p class="label">Email</p>
     <input type="text" name="email" #email ngModel required><br><br>
-    <p class="label">Organization</p>
-    <input type="text" name="organization" #organization ngModel required><br><br>
     <p class="label">Password</p>
     <input type="password" name="password" #password autocomplete="of" ngModel required><br><br>
     <p class="label">Re-type password</p>
-    <input type="password" name="password2" #password2 autocomplete="of" ngModel required><br>
+    <input type="password" name="password2" #password2 autocomplete="of" ngModel required><br><br>
+    <div *ngIf="recruiter.checked">
+    <p class="label">Organization</p>
+    <input type="text" name="organization" #organization ngModel required><br><br>
+    </div>
     <label for="recruiter">Recruiter</label>
     <input type="checkbox" name="recruiter" #recruiter ngModel><br><br>
-    <button class="btn" type="submit" [disabled]="!registerForm.valid">Sign Up</button><br><br>
+    <button class="btn" type="submit" [disabled]="!registerForm.valid">Sign Up</button><br>
     <p>Already have an account? <b (click)="onToggle()">Log in.</b></p>
 </form>
 

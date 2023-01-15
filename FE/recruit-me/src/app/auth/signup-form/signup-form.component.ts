@@ -22,24 +22,17 @@ export class SignupFormComponent implements OnInit {
     const signUpForm = {
       firstName : x.firstName.value,
       lastName : x.lastName.value,
-      organization : x.organization.value,
+      organization : x.organization?.value,
       email : x.email.value,
       password : x.password.value,
       password2 : x.password2.value,
-      recruiter: x.recruiter.value?true:false
+      type: x.recruiter.value?true:false
     }
-    
-    if(x.recruiter === true)
-    this.authService.signUpRecruiter(signUpForm).subscribe(
+    console.log(signUpForm)
+    this.authService.signUpUser(signUpForm).subscribe(
       res =>{
         console.log(res)
-      }
-    )
-    else
-    this.authService.signUpApplicant(signUpForm).subscribe(
-      res =>{
-        console.log(res)
-        this.authService.login({email:res.email,password:res.password})
+        this.authService.login({email:res.email,password:res.password});
       }
     )
     

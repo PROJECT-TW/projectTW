@@ -14,19 +14,16 @@ export class AuthService {
   }
   getUserType(){
     //return 'recruiter';
-    return 'applicant'
+   // return 'applicant'
+    return this.user.type === false?'applicant':'recruiter'
   }
 
   getUser(){
     return this.user
   }
 
-  signUpApplicant(signupForm : any) {
-    return this.http.post<any>("http://localhost:8091/addSearcher",signupForm);
-  }
-
-  signUpRecruiter(signupForm : any) {
-    return this.http.post<any>("http://localhost:8091/addRecruiter",signupForm);
+  signUpUser(signupForm : any) {
+    return this.http.post<any>("http://localhost:8091/addUser",signupForm);
   }
 
   login(loginForm : any) {
