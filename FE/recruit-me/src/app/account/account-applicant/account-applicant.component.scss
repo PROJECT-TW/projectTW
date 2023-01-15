@@ -13,15 +13,17 @@
 }
 
 .personal-info{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
 }
 
 input[type=text]{
     border-radius: 4px;
     height: 30px;
     width: 300px;
+}
+select {
+    border-radius: 4px;
+    height: 30px;
+    width: 300px;   
 }
 
 .cv-box{
@@ -42,5 +44,9 @@ input[type=text]{
     background-color: green;
 }
 .field-name{
+    margin-top: 15px;
     margin-bottom: 5px;
+}
+#first{
+    margin-top: 0px; 
 }

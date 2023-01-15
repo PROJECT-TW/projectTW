@@ -1,25 +1,32 @@
 <div class="container">
     <h2>My Account</h2>
     <div class="content">
-        <div class="personal-info">
+        <form  #accountInfoForm="ngForm" (submit)="saveAccountInfo(accountInfoForm)" class="personal-info" >
             <div class="field">
-                <p class="field-name">Full Name</p>
-                <input type="text" class="field-input">
+                <p class="field-name" id="first">First Name</p>
+                <input type="text" class="field-input" name="firstName" #firstName ngModel>
+            </div>
+            <div class="field">
+                <p class="field-name">Last Name</p>
+                <input type="text" class="field-input" name="lastName"  #lastName ngModel>
             </div>
             <div class="field">
                 <p class="field-name">Location</p>
-                <input type="text" class="field-input">
+                <select class="field-input" name="location" #location ngModel >
+                    <option [value]="option.city" *ngFor="let option of myCities">{{option.city}}</option>
+                  </select>
             </div>
             <div class="field">
                 <p class="field-name">Phone Number</p>
-                <input type="text" class="field-input">
+                <input type="text" class="field-input" name="phone" #phone ngModel>
             </div>
 
             <div class="field">
                 <p class="field-name">Occupation</p>
-                <input type="text" class="field-input">
+                <input type="text" class="field-input" name="ocupation" #ocupation ngModel>
             </div>
-        </div>
+            <button type="submit" class="btn" style="margin-top: 15px;">Save</button>
+        </form>
         <div class="cv-container">
             <p class="field-name">CV</p>
             <div class="cv-box">
