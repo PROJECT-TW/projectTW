@@ -25,12 +25,25 @@ public  class User  {
 
     @Column(name = "typeOfAccount", nullable = false)
     private boolean type;
-    public User(String email, String lastName, String firstName, String password, boolean type) {
-        this.email=email;
-        this.lastName=lastName;
-        this.firstName=firstName;
-        this.password=password;
-        this.type=type;
+
+    @Column(name = "location", nullable = true)
+    private String location;
+
+    @Column(name = "phone", nullable = true)
+    private String phone;
+
+    @Column(name = "ocupation", nullable = true)
+    private String ocupation;
+
+    public User(String email, String lastName, String firstName, String password, boolean type, String location, String phone, String ocupation) {
+        this.email = email;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.password = password;
+        this.type = type;
+        this.location = location;
+        this.phone = phone;
+        this.ocupation = ocupation;
     }
 
     public User() {
@@ -82,5 +95,33 @@ public  class User  {
 
     public void setType(boolean type) {
         this.type = type;
+    }
+
+    public boolean isType() {
+        return type;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getOcupation() {
+        return ocupation;
+    }
+
+    public void setOcupation(String ocupation) {
+        this.ocupation = ocupation;
     }
 }

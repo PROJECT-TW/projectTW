@@ -8,9 +8,10 @@ import java.util.List;
 public class Recruiter extends User{
     @Column(name = "organization", nullable = false)
     private String organization;
-    public Recruiter(String email,String lastName, String firstName, String password,boolean type,  String organization) {
-        super(email,lastName,firstName,password, type);
-        this.organization=organization;
+
+    public Recruiter(String email, String lastName, String firstName, String password, boolean type, String location, String phone, String ocupation, String organization) {
+        super(email, lastName, firstName, password, type, location, phone, ocupation);
+        this.organization = organization;
     }
 
     public Recruiter() {

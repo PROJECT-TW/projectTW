@@ -1,5 +1,7 @@
 package com.example.demo.dtos;
 
+import javax.persistence.Column;
+
 public class UserDto {
 
     private Long id;
@@ -11,16 +13,24 @@ public class UserDto {
     private String password2;
     private boolean type;
 
+    private String location;
 
-    public UserDto(String email,String lastName, String firstName,String password, String password2, boolean type) {
+    private String phone;
+
+    private String ocupation;
+
+
+    public UserDto(String email, String lastName, String firstName, String password, String password2, boolean type, String location, String phone, String ocupation) {
         this.email = email;
-        this.lastName=lastName;
-        this.firstName=firstName;
-        this.password=password;
-        this.password2=password2;
-        this.type=type;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.password = password;
+        this.password2 = password2;
+        this.type = type;
+        this.location = location;
+        this.phone = phone;
+        this.ocupation = ocupation;
     }
-
 
     public UserDto() {
 
@@ -82,5 +92,33 @@ public class UserDto {
 
     public void setPassword2(String password2) {
         this.password2 = password2;
+    }
+
+    public boolean isType() {
+        return type;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getOcupation() {
+        return ocupation;
+    }
+
+    public void setOcupation(String ocupation) {
+        this.ocupation = ocupation;
     }
 }

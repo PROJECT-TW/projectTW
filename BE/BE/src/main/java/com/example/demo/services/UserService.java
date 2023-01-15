@@ -2,6 +2,7 @@ package com.example.demo.services;
 
 import com.example.demo.dtos.RecruiterDto;
 import com.example.demo.dtos.SearcherDto;
+import com.example.demo.dtos.SignUpFormDto;
 import com.example.demo.dtos.UserDto;
 import com.example.demo.entity.Recruiter;
 import com.example.demo.entity.Searcher;
@@ -18,6 +19,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import static com.example.demo.mapper.SearcherMapper.toDto;
+import static com.example.demo.mapper.SearcherMapper.toEntity;
 
 @Service
 public class UserService {
@@ -30,6 +32,48 @@ public class UserService {
     public UserService(SearcherRepository searcherRepository,RecruiterRepository recruiterRepository ) {
         this.searcherRepository = searcherRepository;
         this.recruiterRepository = recruiterRepository;
+    }
+
+    public static <T> T  updateUserData(SignUpFormDto userDto) {
+        if(getSearcherById(userDto.getId())!=null)
+        {
+            if((getSearcherById(userDto.getId())).getType()==false)
+    {
+        Searcher userFromDb = toEntity(getSearcherById(userDto.getId()));
+        userFromDb.setPhone(userDto.getPhone());
+        userFromDb.setOcupation(userDto.getOcupation());
+        userFromDb.setLocation(userDto.getLocation());
+        userFromDb.setFirstName(userDto.getFirstName());
+        userFromDb.setLastName(userDto.getLastName());
+        searcherRepository.save(userFromDb);
+        return (T) SearcherMapper.toDto(searcherRepository.save(userFromDb));
+    }} else
+        if(getRecruiterById(userDto.getId())!=null)
+        {if ((getRecruiterById(userDto.getId())).getType()==true) {
+        Recruiter userFromDb = RecruiterMapper.toEntity(getRecruiterById(userDto.getId()));
+        userFromDb.setPhone(userDto.getPhone());
+        userFromDb.setOcupation(userDto.getOcupation());
+        userFromDb.setFirstName(userDto.getFirstName());
+        userFromDb.setLastName(userDto.getLastName());
+        userFromDb.setOrganization(userDto.getOrganization());
+            return (T) RecruiterMapper.toDto(recruiterRepository.save(userFromDb));
+    }}
+    return null;
+
+    }
+
+    private static RecruiterDto getRecruiterById(Long id) {
+        List<Recruiter> recruiters = recruiterRepository.findAll();
+        List<RecruiterDto> recruiterDtoList = RecruiterMapper.toDtoList(recruiters);
+        Iterator<RecruiterDto> iterator = recruiterDtoList.iterator();
+        RecruiterDto recruitersDto = new RecruiterDto();
+        while (iterator.hasNext()) {
+            recruitersDto = iterator.next();
+            if (recruitersDto.getId() == id) {
+                return recruitersDto;
+            }
+        }
+        return null;
     }
 
     public List<SearcherDto> getAllSearcher() {
@@ -51,7 +95,7 @@ public class UserService {
 
         }
 
-        Searcher searcherEntity = SearcherMapper.toEntity(searcherDto);
+        Searcher searcherEntity = toEntity(searcherDto);
         return SearcherMapper.toDto(searcherRepository.save(searcherEntity));    }
 
 
@@ -59,7 +103,7 @@ public class UserService {
         return toDto(searcherRepository.findByEmail(email));
     }
 
-    public SearcherDto getSearcherById(Long id) {
+    public static SearcherDto getSearcherById(Long id) {
         List<Searcher> searchers = searcherRepository.findAll();
         List<SearcherDto> searcherDtoList = SearcherMapper.toDtoList(searchers);
         Iterator<SearcherDto> iterator = searcherDtoList.iterator();
@@ -113,7 +157,7 @@ public class UserService {
             searcherDtoInUse = iterator1.next();
             if (searcherDtoInUse.getEmail().equals(userDto.getEmail()) &&
                     searcherDtoInUse.getPassword().equals(userDto.getPassword())) {
-                Searcher searcherEntity = SearcherMapper.toEntity(searcherDtoInUse);
+                Searcher searcherEntity = toEntity(searcherDtoInUse);
                 return (T) SearcherMapper.toDto(searcherRepository.save(searcherEntity));
             }
         }

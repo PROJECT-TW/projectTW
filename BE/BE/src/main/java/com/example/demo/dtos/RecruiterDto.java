@@ -12,8 +12,8 @@ public class RecruiterDto extends UserDto{
         super();
     }
 
-    public RecruiterDto(String email,String lastName, String firstName,String password,  String password2,boolean type, String organization) {
-        super(email,lastName,firstName, password, password2, type);
+    public RecruiterDto(String email, String lastName, String firstName, String password, String password2, boolean type, String location, String phone, String ocupation, String organization) {
+        super(email,lastName, firstName,password, password2, type,location,phone,ocupation);
         this.organization=organization;
     }
 

@@ -82,5 +82,9 @@ public class UserController {
         return userService.getSearcherById(id);
     }
 
+    @PutMapping(value = "/updateProfile")
+    public <T> ResponseEntity<T> updateProfile(@RequestBody SignUpFormDto userDto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(UserService.updateUserData(userDto));
+    }
 
 }
