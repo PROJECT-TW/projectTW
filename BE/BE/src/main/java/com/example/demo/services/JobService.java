@@ -85,4 +85,30 @@ public class JobService {
     public static <E> List<E> pickNRandomElements(List<E> list, int n) {
         return pickNRandomElements(list, n, ThreadLocalRandom.current());
     }
+
+    public List<JobDto> getFilteredJobs(JobDto jobDto) {
+        List<Job> jobs = jobRepository.findAll();
+        List<JobDto> jobDtoList = JobMapper.toDtoList(jobs);
+        List<JobDto> jobDtoListWithLocation = new ArrayList<>();
+        Iterator<JobDto> iterator = jobDtoList.iterator();
+        JobDto jobDtos = new JobDto();
+        while (iterator.hasNext()) {
+            jobDtos = iterator.next();
+            if (jobDtos.getLocation().equals(jobDto.getLocation()) && searchForTitleInJob(jobDtos.getTitle(),jobDtos.getDescription(),jobDto.getDescription())==true) {
+                jobDtoListWithLocation.add(jobDtos);
+            }
+        }
+        Collections.sort(jobDtoListWithLocation, (o1, o2) -> o1.getPostDate().compareTo(o2.getPostDate()));
+        return jobDtoListWithLocation;
+
+    }
+
+    public boolean searchForTitleInJob(String title, String description, String filter){
+        title=title.toLowerCase();
+        description=description.toLowerCase();
+        filter=filter.toLowerCase();
+        if(title.contains(filter) || description.contains(filter))
+            return true;
+        return false;
+    }
 }
