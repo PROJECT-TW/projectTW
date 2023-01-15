@@ -24,15 +24,15 @@ public class JobController {
     }
 
     @PostMapping(value = "/addJob")
-   // @CrossOrigin("192.168.1.254:4200")
+   @CrossOrigin("192.168.1.254:4200")
     public ResponseEntity<JobDto> addJob(@RequestBody JobDto jobDto) {
         JobDto addedJobDto = JobService.addJob(jobDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(addedJobDto);
     }
 
-    @GetMapping(value = "/getFourJobs")
-    public List<JobDto> getFourJobs() {
-        return jobService.getFourJobs();
+    @GetMapping(value = "/getRandomJobs/{location}")
+    public List<JobDto> getRandomJobs(@PathVariable String location) {
+        return jobService.getFourJobs(location);
     }
 
     @GetMapping(value = "/getJobById/{id}")

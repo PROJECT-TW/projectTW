@@ -15,10 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Service
@@ -57,10 +54,19 @@ public class JobService {
     }
 
 
-    public List<JobDto> getFourJobs() {
+    public List<JobDto> getFourJobs(String location) {
         List<Job> jobs = jobRepository.findAll();
         List<JobDto> jobDtoList = JobMapper.toDtoList(jobs);
-        return pickNRandomElements(jobDtoList,4);
+        List<JobDto> jobDtoListWithLocation = new ArrayList<>();
+        Iterator<JobDto> iterator = jobDtoList.iterator();
+        JobDto jobDto = new JobDto();
+        while (iterator.hasNext()) {
+            jobDto = iterator.next();
+            if (jobDto.getLocation().equals(location)) {
+                jobDtoListWithLocation.add(jobDto);
+            }
+        }
+        return pickNRandomElements(jobDtoListWithLocation,4);
     }
 
     public static <E> List<E> pickNRandomElements(List<E> list, int n, Random r) {
