@@ -66,7 +66,10 @@ public class JobService {
                 jobDtoListWithLocation.add(jobDto);
             }
         }
-        if(jobDtoListWithLocation.size()>4)
+        if(location.equals("zzzz") || jobDtoListWithLocation.size()==0)
+            return pickNRandomElements(jobDtoList,4);
+        else
+            if(jobDtoListWithLocation.size()>4)
             return pickNRandomElements(jobDtoListWithLocation,4);
         else
             return pickNRandomElements(jobDtoListWithLocation,jobDtoListWithLocation.size());
