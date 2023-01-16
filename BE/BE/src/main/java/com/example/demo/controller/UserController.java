@@ -108,7 +108,7 @@ public class UserController {
 
     @GetMapping(value = "/getFileName/{idUser}")
     @CrossOrigin("http://localhost:4200")
-    public String getFileName(@PathVariable Long idUser) {
+    public FileDb getFileName(@PathVariable Long idUser) {
         return UserService.getFileName(idUser);
     }
 
