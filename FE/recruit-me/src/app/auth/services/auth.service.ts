@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Router } from '@angular/router';
+import { TemplateBindingParseResult } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,10 @@ export class AuthService {
   getLoginStatus(){
     return this.user?true:false
   }
+  setUserData(data : any){
+    this.user = data;
+  }
+
   getUserType(){
     //return 'recruiter';
    // return 'applicant'

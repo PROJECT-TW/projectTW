@@ -9,15 +9,18 @@
     <div class="mid">
         <div class="line">
             <img style="width: 18px;" src="assets/icons/phone.png" alt="">
-            <p>0772091998</p>
+            <p *ngIf="user.phone;else other_content">{{user.phone}}</p>
+            <ng-template #other_content><p class="link" routerLink="/account">Add phone</p></ng-template>
         </div>
         <div class="line">
             <img style="width: 18px;" src="assets/icons/location.png" alt="">
-            <p>Timisoara</p>
+            <p *ngIf="user.location;else other_content2">{{user.location}}</p>
+            <ng-template #other_content2><p class="link" routerLink="/account">Add location</p></ng-template>
         </div>
         <div class="line">
             <img style="width: 18px;" src="assets/icons/job.png" alt="">
-            <p>Software Engineer</p>
+            <p *ngIf="user.ocupation;else other_content3">{{user.ocupation}}</p>
+            <ng-template #other_content3><p class="link" routerLink="/account">Add occupation</p></ng-template>
         </div>
     </div>
     <div class="end"></div>

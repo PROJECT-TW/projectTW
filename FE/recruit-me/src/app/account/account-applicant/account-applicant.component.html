@@ -33,6 +33,9 @@
                 <div class="filename">MihaiPosdarescuCV.pdf</div>
                 <img src="assets/icons/pdf.png" style="width: 20px;" alt="">
             </div>
+            <input type="file" 
+            (change)="onSelectFile($event)">
+            <button (click)="onUploadFile()">apasa</button>
         </div>
     </div>
 </div>

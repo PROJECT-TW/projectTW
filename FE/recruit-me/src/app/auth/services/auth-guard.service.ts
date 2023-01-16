@@ -10,7 +10,6 @@ export class AuthGuardService implements CanActivate{
 
   constructor(private router : Router , private authService : AuthService) { }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    console.log(this.authService.getLoginStatus())
     if(this.authService.getLoginStatus() === true){
       return true;
     }

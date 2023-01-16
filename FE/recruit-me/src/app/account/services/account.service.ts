@@ -10,4 +10,12 @@ export class AccountService {
   saveAccountInformations(accountInfoForm : any) {
     return this.http.put<any>("http://localhost:8090/updateProfile",accountInfoForm);
   }
+
+  fileUpload(file : File){
+    const formData = new FormData(); 
+    formData.append("file",file,file.name)
+    console.log(file)
+   // return this.http.post<File>("https://file.io",formData)
+   return this.http.post<File>("http://localhost:8090/uploadCV",formData)
+  }
 }
