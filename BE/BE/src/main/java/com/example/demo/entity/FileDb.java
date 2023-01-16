@@ -12,6 +12,8 @@ public class FileDb {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column(name = "idUser", nullable = false)
+    private Long idUser;
     @Column(name = "name",nullable = false)
     private String name;
     @Column(name = "type",nullable = false)
@@ -25,8 +27,9 @@ public class FileDb {
 
     }
 
-    public FileDb(String name, String type, byte[] data) {
+    public FileDb(Long idUser,String name, String type, byte[] data) {
         super();
+        this.idUser=idUser;
         this.name = name;
         this.type = type;
         this.data = data;
@@ -63,8 +66,5 @@ public class FileDb {
     public void setData(byte[] data) {
         this.data = data;
     }
-
-
-
 
 }

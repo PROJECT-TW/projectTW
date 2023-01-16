@@ -7,6 +7,7 @@ import javax.persistence.Lob;
 
 public class FileDbDto {
     private Long id;
+    private Long idUser;
 
     private String name;
 
@@ -18,8 +19,9 @@ public class FileDbDto {
 
     }
 
-    public FileDbDto(String name, String type, byte[] data) {
+    public FileDbDto(Long idUser,String name, String type, byte[] data) {
         super();
+        this.idUser=idUser;
         this.name = name;
         this.type = type;
         this.data = data;

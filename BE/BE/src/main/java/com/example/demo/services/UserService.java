@@ -85,8 +85,8 @@ public class UserService {
         return null;
     }
 
-    public static Object uploadFile(MultipartFile file) throws IOException {
-        var myFile = new FileDb(StringUtils.cleanPath(file.getOriginalFilename()),file.getContentType(),file.getBytes());
+    public static Object uploadFile(Long idUser,MultipartFile file) throws IOException {
+        var myFile = new FileDb(idUser,StringUtils.cleanPath(file.getOriginalFilename()),file.getContentType(),file.getBytes());
         return fileDBRepository.save(myFile);
     }
 
