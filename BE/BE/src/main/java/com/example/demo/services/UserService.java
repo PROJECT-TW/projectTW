@@ -14,12 +14,21 @@ import com.example.demo.repository.FileDBRepository;
 import com.example.demo.repository.RecruiterRepository;
 import com.example.demo.repository.SearcherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
+import javax.servlet.http.HttpServletRequest;
+import java.io.*;
+import java.net.URLConnection;
+import java.nio.file.Path;
 import java.util.Iterator;
 import java.util.List;
 
@@ -88,6 +97,26 @@ public class UserService {
     public static Object uploadFile(Long idUser,MultipartFile file) throws IOException {
         var myFile = new FileDb(idUser,StringUtils.cleanPath(file.getOriginalFilename()),file.getContentType(),file.getBytes());
         return fileDBRepository.save(myFile);
+    }
+
+    public static ResponseEntity<Resource> downloadFile(Long idUser) throws IOException {
+        List<FileDb> files = fileDBRepository.findAll();
+        Iterator<FileDb> iterator = files.iterator();
+        FileDb file = new FileDb();
+        while (iterator.hasNext()) {
+            file = iterator.next();
+            if (file.getIdUser() == idUser) {
+                break;
+            }
+        }
+            FileDb attachment = file;
+            return  ResponseEntity.ok()
+                    .contentType(MediaType.parseMediaType(attachment.getType()))
+                    .header(HttpHeaders.CONTENT_DISPOSITION,
+                            "attachment; filename=\"" + attachment.getName()
+                                    + "\"")
+                    .body(new ByteArrayResource(attachment.getData()));
+
     }
 
     public List<SearcherDto> getAllSearcher() {

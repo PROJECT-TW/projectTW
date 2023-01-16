@@ -1,11 +1,15 @@
 package com.example.demo.entity;
 
 
+import org.springframework.core.io.Resource;
+
 import javax.persistence.*;
+import java.io.IOException;
+import java.io.InputStream;
 
 @Entity
 @Table(name ="files")
-public class FileDb {
+public class FileDb extends InputStream {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
@@ -27,12 +31,25 @@ public class FileDb {
 
     }
 
+    @Override
+    public int read() throws IOException {
+        return 0;
+    }
+
     public FileDb(Long idUser,String name, String type, byte[] data) {
         super();
         this.idUser=idUser;
         this.name = name;
         this.type = type;
         this.data = data;
+    }
+
+    public Long getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
     }
 
     public Long getId() {
