@@ -11,11 +11,12 @@ export class AccountService {
     return this.http.put<any>("http://localhost:8090/updateProfile",accountInfoForm);
   }
 
-  fileUpload(file : File){
+  fileUpload(file : File,userId : any){
+    console.log(userId)
     const formData = new FormData(); 
     formData.append("file",file,file.name)
     console.log(file)
    // return this.http.post<File>("https://file.io",formData)
-   return this.http.post<File>("http://localhost:8090/uploadCV",formData)
+   return this.http.post<File>("http://localhost:8090/uploadFile/" + userId,formData)
   }
 }

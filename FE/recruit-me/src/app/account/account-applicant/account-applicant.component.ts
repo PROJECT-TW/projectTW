@@ -36,7 +36,7 @@ export class AccountApplicantComponent implements OnInit {
   }
 
   onUploadFile() {
-    this.accountService.fileUpload(this.file).subscribe(
+    this.accountService.fileUpload(this.file,this.authService.getUser().id).subscribe(
       (res: any) => {
         console.log(res)
 /*         if (typeof (event) === 'object') {
