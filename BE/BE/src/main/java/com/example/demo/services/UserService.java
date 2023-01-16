@@ -4,17 +4,22 @@ import com.example.demo.dtos.RecruiterDto;
 import com.example.demo.dtos.SearcherDto;
 import com.example.demo.dtos.SignUpFormDto;
 import com.example.demo.dtos.UserDto;
+import com.example.demo.entity.FileDb;
 import com.example.demo.entity.Recruiter;
 import com.example.demo.entity.Searcher;
 import com.example.demo.exceptions.CustomException;
 import com.example.demo.mapper.RecruiterMapper;
 import com.example.demo.mapper.SearcherMapper;
+import com.example.demo.repository.FileDBRepository;
 import com.example.demo.repository.RecruiterRepository;
 import com.example.demo.repository.SearcherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
@@ -29,9 +34,13 @@ public class UserService {
     @Autowired
     static RecruiterRepository recruiterRepository;
 
-    public UserService(SearcherRepository searcherRepository,RecruiterRepository recruiterRepository ) {
+    @Autowired
+    static  FileDBRepository fileDBRepository;
+
+    public UserService(SearcherRepository searcherRepository,RecruiterRepository recruiterRepository,FileDBRepository fileDBRepository ) {
         this.searcherRepository = searcherRepository;
         this.recruiterRepository = recruiterRepository;
+        this.fileDBRepository=fileDBRepository;
     }
 
     public static <T> T  updateUserData(SignUpFormDto userDto) {
@@ -74,6 +83,11 @@ public class UserService {
             }
         }
         return null;
+    }
+
+    public static Object uploadFile(MultipartFile file) throws IOException {
+        var myFile = new FileDb(StringUtils.cleanPath(file.getOriginalFilename()),file.getContentType(),file.getBytes());
+        return fileDBRepository.save(myFile);
     }
 
     public List<SearcherDto> getAllSearcher() {

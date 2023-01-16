@@ -1,31 +1,24 @@
-package com.example.demo.entity;
+package com.example.demo.dtos;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Lob;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name ="files")
-public class FileDb {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    @Column(name = "id", nullable = false)
+public class FileDbDto {
     private Long id;
 
-    @Column(name = "name",nullable = false)
     private String name;
-    @Column(name = "type",nullable = false)
+
     private String type;
 
-    @Lob
-    @Column(name = "data",nullable = true)
     private byte[] data;
 
-    public FileDb() {
+    public FileDbDto() {
 
     }
 
-    public FileDb(String name, String type, byte[] data) {
+    public FileDbDto(String name, String type, byte[] data) {
         super();
         this.name = name;
         this.type = type;
