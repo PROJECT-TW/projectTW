@@ -1,0 +1,28 @@
+.profile-box{
+    .head{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        .name{
+            font-weight: 900;
+        }
+        .email{
+            font-size: 14px;
+            color: var(--color2);
+        }
+    }
+    .mid{
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .line{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+    }
+
+}

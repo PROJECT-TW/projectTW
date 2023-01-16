@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/services/auth.service';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  selector: 'app-account',
+  templateUrl: './account.component.html',
+  styleUrls: ['./account.component.scss']
 })
-export class DashboardComponent implements OnInit {
-
+export class AccountComponent implements OnInit {
   userType : any
   constructor(private authService : AuthService) { }
 
@@ -15,4 +14,5 @@ export class DashboardComponent implements OnInit {
     this.userType = this.authService.getUserType();
     console.log(this.userType)
   }
+
 }

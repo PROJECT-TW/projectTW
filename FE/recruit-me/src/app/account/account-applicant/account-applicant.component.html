@@ -1,0 +1,38 @@
+<div class="container account-applicant">
+    <h2>My Account</h2>
+    <div class="content">
+        <div class="personal-info" >
+            <div class="field">
+                <p class="field-name" id="first">First Name</p>
+                <input type="text" class="field-input" [(ngModel)]="usercopy.firstName">
+            </div>
+            <div class="field">
+                <p class="field-name">Last Name</p>
+                <input type="text" class="field-input"[(ngModel)]="usercopy.lastName">
+            </div>
+            <div class="field">
+                <p class="field-name">Location</p>
+                <select class="field-input" name="location" [(ngModel)]="usercopy.location" >
+                    <option [value]="option.city" *ngFor="let option of myCities">{{option.city}}</option>
+                  </select>
+            </div>
+            <div class="field">
+                <p class="field-name">Phone Number</p>
+                <input type="text" class="field-input" [(ngModel)]="usercopy.phone">
+            </div>
+
+            <div class="field">
+                <p class="field-name">Occupation</p>
+                <input type="text" class="field-input" [(ngModel)]="usercopy.ocupation">
+            </div>
+            <button class="btn" style="margin-top: 15px;" (click)="saveAccountInfo()">Save</button>
+        </div>
+        <div class="cv-container">
+            <p class="field-name">CV</p>
+            <div class="cv-box">
+                <div class="filename">MihaiPosdarescuCV.pdf</div>
+                <img src="assets/icons/pdf.png" style="width: 20px;" alt="">
+            </div>
+        </div>
+    </div>
+</div>
