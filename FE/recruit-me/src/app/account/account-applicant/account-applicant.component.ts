@@ -11,28 +11,18 @@ import { AccountService } from '../services/account.service';
 export class AccountApplicantComponent implements OnInit {
 
   myCities : any = cities;
-  user : any; 
+  usercopy : any; 
+  ceva = "hello"
   constructor(private authService : AuthService, private accountService: AccountService) { }
 
   ngOnInit(): void {
-    this.user = this.authService.getUser();
-    console.log(this.user);
+    this.usercopy = JSON.parse(JSON.stringify(this.authService.getUser())) 
+    console.log(this.usercopy);
   }
 
-  saveAccountInfo(form : any){
-    const x = form.controls;
-    const accountInfoForm = {
-      firstName : x.firstName?.value,
-      lastName : x.lastName?.value,
-      location : x.location?.value,
-      phone : x.phone?.value,
-      ocupation : x.ocupation.value,
-      id: this.user.id
-    }
-    console.log(accountInfoForm);
-    this.accountService.saveAccountInformations(accountInfoForm).subscribe(
+  saveAccountInfo(){
+    this.accountService.saveAccountInformations(this.usercopy).subscribe(
       res =>{
-        console.log(res)
       },
       err =>{
         console.log(err)

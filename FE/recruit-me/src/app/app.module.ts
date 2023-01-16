@@ -20,6 +20,7 @@ import { ProfileBoxComponent } from './shared/components/profile-box/profile-box
 import { AccountComponent } from './account/account.component';
 import { AccountRecruiterComponent } from './account/account-recruiter/account-recruiter.component';
 import { AccountApplicantComponent } from './account/account-applicant/account-applicant.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { AccountApplicantComponent } from './account/account-applicant/account-a
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

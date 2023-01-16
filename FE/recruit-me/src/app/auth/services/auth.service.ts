@@ -7,7 +7,9 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   private user: any = null;
-  constructor(private http: HttpClient,private router : Router) { }
+  constructor(private http: HttpClient,private router : Router) {
+    this.tryLoginFromLocalstorge();
+   }
 
   getLoginStatus(){
     return this.user?true:false
@@ -23,18 +25,28 @@ export class AuthService {
   }
 
   signUpUser(signupForm : any) {
-    return this.http.post<any>("http://localhost:8091/addUser",signupForm);
+    return this.http.post<any>("http://localhost:8090/addUser",signupForm);
   }
 
   login(loginForm : any) {
-    return this.http.post<any>("http://localhost:8091/login",loginForm).subscribe(
+    return this.http.post<any>("http://localhost:8090/login",loginForm).subscribe(
       res =>{
         this.user = res;
+        if(!localStorage.getItem('user')){
+          localStorage.setItem('user',JSON.stringify(this.user));
+        }
         this.router.navigate(['']);
       },
       err =>{
         console.log(err)
       }
     );
+  }
+
+  tryLoginFromLocalstorge(){
+    if(localStorage.getItem('user')){
+      const localstorgeUser = JSON.parse(localStorage.getItem('user') || '{}')
+      this.login({email:localstorgeUser.email,password:localstorgeUser.password});
+    }
   }
 }

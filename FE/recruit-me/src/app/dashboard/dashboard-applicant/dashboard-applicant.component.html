@@ -7,9 +7,7 @@
                     RecruitMe.</p>
             </div>
             <div class="job-boxes-container">
-                <app-job-box></app-job-box>
-                <app-job-box></app-job-box>
-                <app-job-box></app-job-box>
+                <app-job-box *ngFor="let j of jobs" [job]="j"></app-job-box>
             </div>
         </div>
         <div class="right">

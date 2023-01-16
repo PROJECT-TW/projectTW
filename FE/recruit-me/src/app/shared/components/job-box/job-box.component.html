@@ -1,8 +1,8 @@
 <div class="job-box">
     <div class="inf">
-        <p class="company">Wolfjow Studios</p>
-        <p class="title">Software Engineer - Backend (All Skill Levels)</p>
-        <p class="location">Remote</p>
+        <p class="company">{{job.owner}}</p>
+        <p class="title">{{job.title}}</p>
+        <p class="location">{{job.location}}</p>
     </div>
     <img style="width: 18px; height: 18px;" [src]="isFav?'assets/icons/love2.png':'assets/icons/love.png'" alt="" (click)="addToFav()">
 </div>

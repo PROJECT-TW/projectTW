@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./job-box.component.scss']
 })
 export class JobBoxComponent implements OnInit {
-  @Input() jobPreview : any = {};
+  @Input() job : any = {};
   isFav : boolean = false;
   constructor() { }
 

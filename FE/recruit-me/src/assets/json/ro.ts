@@ -33,7 +33,7 @@ export const cities = [
       "population_proper": "319279"
     }, 
     {
-      "city": "Cluj-Napoca", 
+      "city": "Cluj", 
       "lat": "46.7667", 
       "lng": "23.6000", 
       "country": "Romania", 
