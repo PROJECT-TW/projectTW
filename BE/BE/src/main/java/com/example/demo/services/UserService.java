@@ -119,6 +119,19 @@ public class UserService {
 
     }
 
+    public static String getFileName(Long idUser) {
+        List<FileDb> files = fileDBRepository.findAll();
+        Iterator<FileDb> iterator = files.iterator();
+        FileDb file = new FileDb();
+        while (iterator.hasNext()) {
+            file = iterator.next();
+            if (file.getIdUser() == idUser) {
+                return file.getName();
+            }
+        }
+        return null;
+    }
+
     public List<SearcherDto> getAllSearcher() {
         List<Searcher> searchers = searcherRepository.findAll();
         List<SearcherDto> searcherDtoList = SearcherMapper.toDtoList(searchers);

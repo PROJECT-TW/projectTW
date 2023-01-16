@@ -106,4 +106,10 @@ public class UserController {
         return UserService.downloadFile(idUser);
     }
 
+    @GetMapping(value = "/getFileName/{idUser}")
+    @CrossOrigin("http://localhost:4200")
+    public String getFileName(@PathVariable Long idUser) {
+        return UserService.getFileName(idUser);
+    }
+
 }
