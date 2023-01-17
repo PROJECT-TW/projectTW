@@ -19,4 +19,17 @@ export class AccountService {
    // return this.http.post<File>("https://file.io",formData)
    return this.http.post<File>("http://localhost:8090/uploadFile/" + userId,formData)
   }
+
+  downloadFile(userId : any){
+    return this.http.get<any>("http://localhost:8090/downloadFile/" + userId);
+  }
+
+  getCVName(userId : any){
+    return this.http.get<any>("http://localhost:8090/getFileName/" + userId);
+  }
+
+  deleteCV(userId : any){
+    return this.http.get<any>("http://localhost:8090/deleteFile/" + userId);
+  }
+
 }

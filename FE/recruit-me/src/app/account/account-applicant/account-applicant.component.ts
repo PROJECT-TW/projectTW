@@ -13,11 +13,12 @@ export class AccountApplicantComponent implements OnInit {
   myCities: any = cities;
   usercopy: any;
   file: any;
+  cvName : string = "";
   constructor(private authService: AuthService, private accountService: AccountService) { }
 
   ngOnInit(): void {
     this.usercopy = JSON.parse(JSON.stringify(this.authService.getUser()))
-    console.log(this.usercopy);
+    this.getCVName();
   }
 
   saveAccountInfo() {
@@ -39,14 +40,37 @@ export class AccountApplicantComponent implements OnInit {
     this.accountService.fileUpload(this.file,this.authService.getUser().id).subscribe(
       (res: any) => {
         console.log(res)
-/*         if (typeof (event) === 'object') {
-          // Short link via api response
-          this.shortLink = event.link;
-          console.log(this.shortLink)
-        } */
+        this.getCVName()
       },
       err => {
         console.log(err)
+      }
+    )
+  }
+  onDownloadFile(){
+    window.open('http://localhost:8090/downloadFile/27');
+  }
+
+  deleteCV(){
+    this.accountService.deleteCV(this.authService.getUser().id).subscribe(
+      res =>{
+        console.log(res)
+        this.getCVName();
+      },
+      err =>[
+        console.log(err)
+      ]
+    )
+  }
+
+  getCVName(){
+    this.accountService.getCVName(this.authService.getUser().id).subscribe(
+      res =>{
+        console.log(res)
+        this.cvName = res !== null?res.name:'';
+      },
+      err =>{
+        console.log(err);
       }
     )
   }

@@ -9,19 +9,21 @@
     margin-top: 40px;
     display: flex;
     gap : 50px;
-    align-items: center;
+    align-items:flex-start;
 }
 input[type=text]{
     border-radius: 4px;
     height: 30px;
     width: 300px;
 }
+input[type=file]{
+    width: 250px;
+}
 select {
     border-radius: 4px;
     height: 30px;
     width: 300px;   
 }
-
 .cv-box{
     display: flex;
     box-sizing: border-box;
@@ -33,11 +35,11 @@ select {
     box-shadow: 0 0 2px #c4c7cc;
     align-items: center;
     gap: 5px;
+    width: fit-content;
 }
 .fileimg{
     width: 20px;
     height: 100%;
-    background-color: green;
 }
 .field-name{
     margin-top: 15px;

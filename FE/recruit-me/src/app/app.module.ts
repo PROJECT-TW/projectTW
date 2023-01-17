@@ -21,6 +21,7 @@ import { AccountComponent } from './account/account.component';
 import { AccountRecruiterComponent } from './account/account-recruiter/account-recruiter.component';
 import { AccountApplicantComponent } from './account/account-applicant/account-applicant.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { JobOfferComponent } from './shared/components/job-offer/job-offer.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AccountComponent,
     AccountRecruiterComponent,
     AccountApplicantComponent,
+    JobOfferComponent,
   ],
   imports: [
     BrowserModule,
