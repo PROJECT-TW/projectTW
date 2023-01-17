@@ -100,8 +100,11 @@ public class JobService {
         JobDto jobDtos = new JobDto();
         while (iterator.hasNext()) {
             jobDtos = iterator.next();
-            if (jobDtos.getLocation().equals(location) && searchForTitleInJob(jobDtos.getTitle(),jobDtos.getDescription(),name)==true) {
-                jobDtoListWithLocation.add(jobDtos);
+            if (searchForTitleInJob(jobDtos.getTitle(),jobDtos.getDescription(),name)==true) {
+                if(location.equals("everywhere"))
+                    jobDtoListWithLocation.add(jobDtos);
+                else if(jobDtos.getLocation().equals(location))
+                    jobDtoListWithLocation.add(jobDtos);
             }
         }
         Collections.sort(jobDtoListWithLocation, (o1, o2) -> o1.getPostDate().compareTo(o2.getPostDate()));
