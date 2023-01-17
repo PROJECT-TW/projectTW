@@ -1,3 +1,42 @@
 .container{
-    background-color: rgb(234, 234, 234);;
+    background-color: rgb(234, 234, 234);
+    min-height: calc(100vh - 72px);
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 25px;
+    padding-bottom: 25px;
 }
+.content{
+    background-color: red;
+    height: calc(100vh - 72px - 50px);
+    display: flex;
+    flex-direction: column;
+}
+.top{
+    height: 50px;
+    background-color: aqua;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+.bottom{
+    height: calc(100% - 50px);
+    display: flex;
+    background-color: yellow;
+}
+.left{
+    width: 350px;
+    background-color: green;
+    overflow: auto;
+}
+.right{
+    width: calc(100% - 300px);
+    background-color: blue;
+    overflow: auto;
+}
+select {
+    border-radius: 4px;
+    height: 30px;
+    width: 150px;   
+}
+
