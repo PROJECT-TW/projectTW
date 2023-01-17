@@ -132,6 +132,20 @@ public class UserService {
         return null;
     }
 
+    public static int deleteFile(Long idUser) {
+        List<FileDb> files = fileDBRepository.findAll();
+        Iterator<FileDb> iterator = files.iterator();
+        FileDb file = new FileDb();
+        while (iterator.hasNext()) {
+            file = iterator.next();
+            if (file.getIdUser() == idUser) {
+                fileDBRepository.delete(file);
+                return 1;
+            }
+        }
+        return 0;
+    }
+
     public List<SearcherDto> getAllSearcher() {
         List<Searcher> searchers = searcherRepository.findAll();
         List<SearcherDto> searcherDtoList = SearcherMapper.toDtoList(searchers);

@@ -36,28 +36,25 @@ public class UserController {
 
     @PostMapping(value = "/addUser")
     @CrossOrigin("http://localhost:4200")
-    public <T>  ResponseEntity<T> addUser(@RequestBody SignUpFormDto signUpFormDto) {
-        if(signUpFormDto.getPassword().equals(signUpFormDto.getPassword2()))
-        {
-            if(signUpFormDto.getType()==true) {
-                RecruiterDto  addRecruiterDto=signUpToRecruiterDto(signUpFormDto);
+    public <T> ResponseEntity<T> addUser(@RequestBody SignUpFormDto signUpFormDto) {
+        if (signUpFormDto.getPassword().equals(signUpFormDto.getPassword2())) {
+            if (signUpFormDto.getType() == true) {
+                RecruiterDto addRecruiterDto = signUpToRecruiterDto(signUpFormDto);
                 RecruiterDto addedRecruiterDto = UserService.addRecruiter(addRecruiterDto);
                 return (ResponseEntity<T>) ResponseEntity.status(HttpStatus.CREATED).body(addedRecruiterDto);
-            }
-            else {
+            } else {
                 SearcherDto addSearcherDto = signUpToSerarcherDto(signUpFormDto);
                 SearcherDto addedSearcherDto = UserService.addSearcher(addSearcherDto);
                 return (ResponseEntity<T>) ResponseEntity.status(HttpStatus.CREATED).body(addedSearcherDto);
             }
-        }
-        else
+        } else
             return null;
     }
 
     @PostMapping(value = "/login")
     @CrossOrigin("http://localhost:4200")
     public <T> ResponseEntity<T> login(@RequestBody UserDto userL) {
-            return ResponseEntity.status(HttpStatus.CREATED).body(UserService.login(userL));
+        return ResponseEntity.status(HttpStatus.CREATED).body(UserService.login(userL));
     }
 
     @GetMapping(value = "/getRecruiterByEmail/{email}")
@@ -67,7 +64,7 @@ public class UserController {
     }
 
     @GetMapping(value = "/allSearchers")
-    @CrossOrigin(origins= {"*"}, maxAge = 48000, allowCredentials = "false")
+    @CrossOrigin(origins = {"*"}, maxAge = 48000, allowCredentials = "false")
     public List<SearcherDto> getAllSearchers() {
 
         return userService.getAllSearcher();
@@ -94,10 +91,10 @@ public class UserController {
 
     @PostMapping(value = "/uploadFile/{idUser}")
     @CrossOrigin("http://localhost:4200")
-    public int uploadFile(@PathVariable Long idUser,@RequestBody MultipartFile file) throws IOException {
-         if (UserService.uploadFile(idUser,file)!=null)
-             return 1;
-         else return 0;
+    public int uploadFile(@PathVariable Long idUser, @RequestBody MultipartFile file) throws IOException {
+        if (UserService.uploadFile(idUser, file) != null)
+            return 1;
+        else return 0;
     }
 
     @GetMapping(value = "/downloadFile/{idUser}")
@@ -112,4 +109,8 @@ public class UserController {
         return UserService.getFileName(idUser);
     }
 
+    @GetMapping(value = "deleteFile/{idUser}")
+    public int delete(@PathVariable Long idUser) {
+        return UserService.deleteFile(idUser);
+    }
 }
