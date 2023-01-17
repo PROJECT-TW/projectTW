@@ -92,7 +92,7 @@ public class JobService {
         return pickNRandomElements(list, n, ThreadLocalRandom.current());
     }
 
-    public List<JobDto> getFilteredJobs(JobDto jobDto) {
+    public List<JobDto> getFilteredJobs(String name, String location) {
         List<Job> jobs = jobRepository.findAll();
         List<JobDto> jobDtoList = JobMapper.toDtoList(jobs);
         List<JobDto> jobDtoListWithLocation = new ArrayList<>();
@@ -100,7 +100,7 @@ public class JobService {
         JobDto jobDtos = new JobDto();
         while (iterator.hasNext()) {
             jobDtos = iterator.next();
-            if (jobDtos.getLocation().equals(jobDto.getLocation()) && searchForTitleInJob(jobDtos.getTitle(),jobDtos.getDescription(),jobDto.getDescription())==true) {
+            if (jobDtos.getLocation().equals(location) && searchForTitleInJob(jobDtos.getTitle(),jobDtos.getDescription(),name)==true) {
                 jobDtoListWithLocation.add(jobDtos);
             }
         }

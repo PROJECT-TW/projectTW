@@ -42,10 +42,10 @@ public class JobController {
         return jobService.getJobById(id);
     }
 
-    @GetMapping(value = "/getFilteredJobs")
+    @GetMapping(value = "/getFilteredJobs/{name}/{location}")
     @CrossOrigin("http://localhost:4200")
-    public List<JobDto> getRandomJobs(@RequestBody JobDto jobDto) {
-        return jobService.getFilteredJobs(jobDto);
+    public List<JobDto> getRandomJobs(@PathVariable String name, @PathVariable  String location) {
+        return jobService.getFilteredJobs(name, location);
     }
 
 }
