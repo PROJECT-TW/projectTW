@@ -5,6 +5,7 @@ import com.example.demo.dtos.SearcherDto;
 import com.example.demo.dtos.SignUpFormDto;
 import com.example.demo.dtos.UserDto;
 
+import com.example.demo.entity.Application;
 import com.example.demo.entity.FileDb;
 import com.example.demo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -110,7 +111,15 @@ public class UserController {
     }
 
     @GetMapping(value = "deleteFile/{idUser}")
+    @CrossOrigin("http://localhost:4200")
     public int delete(@PathVariable Long idUser) {
         return UserService.deleteFile(idUser);
+    }
+
+    @PostMapping(value = "/uploadApplication")
+    @CrossOrigin("http://localhost:4200")
+    public ResponseEntity<Application>  uploadApplication(@RequestBody Application application){
+        return ResponseEntity.status(HttpStatus.CREATED).body(UserService.uploadApplication(application));
+
     }
 }

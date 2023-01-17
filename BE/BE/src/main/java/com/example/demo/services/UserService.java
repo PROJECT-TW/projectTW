@@ -4,12 +4,14 @@ import com.example.demo.dtos.RecruiterDto;
 import com.example.demo.dtos.SearcherDto;
 import com.example.demo.dtos.SignUpFormDto;
 import com.example.demo.dtos.UserDto;
+import com.example.demo.entity.Application;
 import com.example.demo.entity.FileDb;
 import com.example.demo.entity.Recruiter;
 import com.example.demo.entity.Searcher;
 import com.example.demo.exceptions.CustomException;
 import com.example.demo.mapper.RecruiterMapper;
 import com.example.demo.mapper.SearcherMapper;
+import com.example.demo.repository.ApplicationRepository;
 import com.example.demo.repository.FileDBRepository;
 import com.example.demo.repository.RecruiterRepository;
 import com.example.demo.repository.SearcherRepository;
@@ -29,6 +31,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.net.URLConnection;
 import java.nio.file.Path;
+import java.time.LocalDate;
 import java.util.Iterator;
 import java.util.List;
 
@@ -46,10 +49,13 @@ public class UserService {
     @Autowired
     static  FileDBRepository fileDBRepository;
 
-    public UserService(SearcherRepository searcherRepository,RecruiterRepository recruiterRepository,FileDBRepository fileDBRepository ) {
+    @Autowired
+    static ApplicationRepository applicationRepository;
+    public UserService(SearcherRepository searcherRepository,RecruiterRepository recruiterRepository,FileDBRepository fileDBRepository ,ApplicationRepository applicationRepository) {
         this.searcherRepository = searcherRepository;
         this.recruiterRepository = recruiterRepository;
         this.fileDBRepository=fileDBRepository;
+        this.applicationRepository=applicationRepository;
     }
 
     public static <T> T  updateUserData(SignUpFormDto userDto) {
@@ -144,6 +150,11 @@ public class UserService {
             }
         }
         return 0;
+    }
+
+    public static Application uploadApplication(Application application) {
+        application.setApplicationDate(LocalDate.now());
+        return applicationRepository.save(application);
     }
 
     public List<SearcherDto> getAllSearcher() {
