@@ -39,7 +39,7 @@ public class JobService {
         return JobMapper.toDto(jobRepository.save(jobEntity));
     }
 
-    public JobDto getJobById(Long id) {
+    public static JobDto getJobById(Long id) {
         List<Job> jobs = jobRepository.findAll();
         List<JobDto> jobDtoList = JobMapper.toDtoList(jobs);
         Iterator<JobDto> iterator = jobDtoList.iterator();

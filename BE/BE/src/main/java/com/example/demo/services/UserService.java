@@ -1,20 +1,12 @@
 package com.example.demo.services;
 
-import com.example.demo.dtos.RecruiterDto;
-import com.example.demo.dtos.SearcherDto;
-import com.example.demo.dtos.SignUpFormDto;
-import com.example.demo.dtos.UserDto;
-import com.example.demo.entity.Application;
-import com.example.demo.entity.FileDb;
-import com.example.demo.entity.Recruiter;
-import com.example.demo.entity.Searcher;
+import com.example.demo.dtos.*;
+import com.example.demo.entity.*;
 import com.example.demo.exceptions.CustomException;
+import com.example.demo.mapper.JobMapper;
 import com.example.demo.mapper.RecruiterMapper;
 import com.example.demo.mapper.SearcherMapper;
-import com.example.demo.repository.ApplicationRepository;
-import com.example.demo.repository.FileDBRepository;
-import com.example.demo.repository.RecruiterRepository;
-import com.example.demo.repository.SearcherRepository;
+import com.example.demo.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
@@ -32,6 +24,7 @@ import java.io.*;
 import java.net.URLConnection;
 import java.nio.file.Path;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -51,11 +44,20 @@ public class UserService {
 
     @Autowired
     static ApplicationRepository applicationRepository;
-    public UserService(SearcherRepository searcherRepository,RecruiterRepository recruiterRepository,FileDBRepository fileDBRepository ,ApplicationRepository applicationRepository) {
+
+    @Autowired
+    static FavoriteRepository favoriteRepository;
+
+    @Autowired
+    static JobRepository jobRepository;
+
+    public UserService(SearcherRepository searcherRepository,RecruiterRepository recruiterRepository,FileDBRepository fileDBRepository ,ApplicationRepository applicationRepository,FavoriteRepository favoriteRepository,JobRepository jobRepository) {
         this.searcherRepository = searcherRepository;
         this.recruiterRepository = recruiterRepository;
         this.fileDBRepository=fileDBRepository;
         this.applicationRepository=applicationRepository;
+        this.favoriteRepository=favoriteRepository;
+        this.jobRepository = jobRepository;
     }
 
     public static <T> T  updateUserData(SignUpFormDto userDto) {
@@ -155,6 +157,25 @@ public class UserService {
     public static Application uploadApplication(Application application) {
         application.setApplicationDate(LocalDate.now());
         return applicationRepository.save(application);
+    }
+
+    public static Favorite addFavorite(Favorite favorite) {
+        return favoriteRepository.save(favorite);
+    }
+
+    public static List<Job> getFavoriteJobs(Long idUser) {
+        List<Favorite> favoritesAll = favoriteRepository.findAll();
+        List<Job> favoriteJobs=new ArrayList<>();
+        Iterator<Favorite> iterator = favoritesAll.iterator();
+        Favorite fav = new Favorite();
+        while (iterator.hasNext()) {
+            fav = iterator.next();
+            if (fav.getIdUser()==idUser) {
+                favoriteJobs.add(JobMapper.toEntity(JobService.getJobById(fav.getIdJob())));
+        }
+        }
+
+        return favoriteJobs;
     }
 
     public List<SearcherDto> getAllSearcher() {

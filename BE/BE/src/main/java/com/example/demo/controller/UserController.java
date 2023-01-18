@@ -6,7 +6,9 @@ import com.example.demo.dtos.SignUpFormDto;
 import com.example.demo.dtos.UserDto;
 
 import com.example.demo.entity.Application;
+import com.example.demo.entity.Favorite;
 import com.example.demo.entity.FileDb;
+import com.example.demo.entity.Job;
 import com.example.demo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -120,6 +122,17 @@ public class UserController {
     @CrossOrigin("http://localhost:4200")
     public ResponseEntity<Application>  uploadApplication(@RequestBody Application application){
         return ResponseEntity.status(HttpStatus.CREATED).body(UserService.uploadApplication(application));
+    }
 
+    @PostMapping(value = "/addFavorite")
+    @CrossOrigin("http://localhost:4200")
+    public ResponseEntity<Favorite>  addFavorite(@RequestBody Favorite favorite){
+        return ResponseEntity.status(HttpStatus.CREATED).body(UserService.addFavorite(favorite));
+    }
+
+    @GetMapping(value = "/getFavoriteJobs/{idUser}")
+    @CrossOrigin("http://localhost:4200")
+    public List<Job> getFavorites(@PathVariable Long idUser) {
+        return UserService.getFavoriteJobs(idUser);
     }
 }
