@@ -10,14 +10,15 @@ public class JobDto {
     private String description;
     private LocalDate postDate;
     private String owner;
-
+    private String requirements;
     private String location;
 
-    public JobDto(String title, String description, String owner, String location) {
+    public JobDto(String title, String description, String owner, String location,  String requirements) {
         this.title = title;
         this.description = description;
         this.owner=owner;
         this.location=location;
+        this.requirements=requirements;
     }
     public JobDto() {
     }
@@ -69,5 +70,13 @@ public class JobDto {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getRequirements() {
+        return requirements;
+    }
+
+    public void setRequirements(String requirements) {
+        this.requirements = requirements;
     }
 }

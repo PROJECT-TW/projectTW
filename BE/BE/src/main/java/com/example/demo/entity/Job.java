@@ -30,11 +30,15 @@ public class Job {
     @Column(name = "location", nullable = false)
     private String location;
 
-    public Job(String title, String description, String owner, String location) {
+    @Column(name = "requirements", nullable = false)
+    private String requirements;
+
+    public Job(String title, String description, String owner, String location,String requirements) {
         this.title = title;
         this.description = description;
         this.owner=owner;
         this.location=location;
+        this.requirements=requirements;
     }
     public Job() {
     }
@@ -85,5 +89,13 @@ public class Job {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getRequirements() {
+        return requirements;
+    }
+
+    public void setRequirements(String requirements) {
+        this.requirements = requirements;
     }
 }

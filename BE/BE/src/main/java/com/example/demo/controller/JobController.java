@@ -44,7 +44,7 @@ public class JobController {
 
     @GetMapping(value = "/getFilteredJobs/{name}/{location}")
     @CrossOrigin("http://localhost:4200")
-    public List<JobDto> getRandomJobs(@PathVariable String name, @PathVariable  String location) {
+    public List<JobDto> getFilteredJobs(@PathVariable String name,@PathVariable String location) {
         return jobService.getFilteredJobs(name, location);
     }
 
