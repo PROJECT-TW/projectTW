@@ -12,13 +12,16 @@ public class JobDto {
     private String owner;
     private String requirements;
     private String location;
+    private String jobType;
 
-    public JobDto(String title, String description, String owner, String location,  String requirements) {
+    public JobDto(String title, String description, String owner, String location,  String requirements,String jobType) {
         this.title = title;
         this.description = description;
         this.owner=owner;
         this.location=location;
         this.requirements=requirements;
+        this.jobType=jobType;
+
     }
     public JobDto() {
     }
@@ -78,5 +81,13 @@ public class JobDto {
 
     public void setRequirements(String requirements) {
         this.requirements = requirements;
+    }
+
+    public String getJobType() {
+        return jobType;
+    }
+
+    public void setJobType(String jobType) {
+        this.jobType = jobType;
     }
 }

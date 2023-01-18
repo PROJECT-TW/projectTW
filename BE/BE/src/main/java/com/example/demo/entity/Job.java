@@ -33,13 +33,18 @@ public class Job {
     @Column(name = "requirements", nullable = false)
     private String requirements;
 
-    public Job(String title, String description, String owner, String location,String requirements) {
+    @Column(name = "jobType", nullable = false)
+    private String jobType;
+
+    public Job(String title, String description, String owner, String location,String requirements,String jobType) {
         this.title = title;
         this.description = description;
         this.owner=owner;
         this.location=location;
         this.requirements=requirements;
+        this.jobType=jobType;
     }
+
     public Job() {
     }
 
@@ -97,5 +102,13 @@ public class Job {
 
     public void setRequirements(String requirements) {
         this.requirements = requirements;
+    }
+
+    public String getJobType() {
+        return jobType;
+    }
+
+    public void setJobType(String jobType) {
+        this.jobType = jobType;
     }
 }

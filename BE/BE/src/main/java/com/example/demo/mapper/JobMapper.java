@@ -20,6 +20,7 @@ public class JobMapper {
         job.setLocation(jobDto.getLocation());
         job.setOwner(jobDto.getOwner());
         job.setRequirements(jobDto.getRequirements());
+        job.setJobType(jobDto.getJobType());
         return job;
     }
 
@@ -32,6 +33,7 @@ public class JobMapper {
         jobDto.setLocation(job.getLocation());
         jobDto.setOwner(job.getOwner());
         jobDto.setRequirements(job.getRequirements());
+        jobDto.setJobType(job.getJobType());
         return jobDto;
     }
 
