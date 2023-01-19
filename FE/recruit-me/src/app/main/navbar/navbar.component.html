@@ -3,9 +3,9 @@
         <p class="logo-text" routerLink="dashboard" style="cursor: pointer;">Recruit<span style="color: black;">Me!</span></p>
     </div>
     <div class="search-container">
-        <input type="text" id="search-job" placeholder="Search for job titles">
-        <input type="text" id="search-country" value="Romania">
-        <button class="btn"><img style="width: 16px;" src="assets/icons/search.png" alt="" routerLink="/jobs"></button>
+        <input type="text" id="search-job" placeholder="Search for job titles" [(ngModel)]="jobName">
+        <input type="text" id="search-country" value="Bucuresti" [(ngModel)]="jobLocation">
+        <button class="btn"><img style="width: 16px;" src="assets/icons/search.png" alt="" (click)="goToJobsPage()"></button>
     </div>
     <div class="options-container">
         <img style="width: 20px; cursor: pointer;" src="assets/icons/user.png" alt="" routerLink="/account">

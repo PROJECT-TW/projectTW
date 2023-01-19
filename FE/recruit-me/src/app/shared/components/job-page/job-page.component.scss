@@ -1,0 +1,29 @@
+.title{
+    font-weight: 600;
+    line-height: 20px;
+    font-size: 24px;
+}
+.subtitle{
+    font-weight: 600;
+    line-height: 20px;
+}
+.company,.location{
+    font-size: 14px;
+    color: var(--color2);
+}
+.basic-info{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.first-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.buttons{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

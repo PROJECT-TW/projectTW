@@ -1,25 +1,24 @@
-<div class="container">
-    <div class="content">
-        <div class="top">
-            <select class="field-input" name="location" >
-                <option>All</option>
-                <option>Full Time</option>
-                <option>Part Time</option>
-              </select>
-              <select class="field-input" name="location" >
-                <option>All</option>
-                <option>Full Time</option>
-                <option>Part Time</option>
-              </select>
-              <select class="field-input" name="location" >
-                <option>All</option>
-                <option>Full Time</option>
-                <option>Part Time</option>
-              </select>
-        </div>
-        <div class="bottom">
-            <div class="left"></div>
-            <div class="right"></div>
-        </div>
+<div class="container jobs-component">
+  <div class="content">
+    <div class="top">
+      <select class="field-input" name="type" [(ngModel)]="filter.type" (ngModelChange)="filterJobs()">
+        <option>All</option>
+        <option>Full Time</option>
+        <option>Part Time</option>
+      </select>
+      <select class="field-input" name="time" [(ngModel)]="filter.time" (ngModelChange)="filterJobs()">
+        <option>All</option>
+        <option>Last 7 days</option>
+        <option>Last 1 months</option>
+      </select>
     </div>
+    <div class="bottom">
+      <div class="left">
+        <app-job-box *ngFor="let j of filteredJobs;let i=index" [job]="j" style="width:100%;margin-bottom: 2px;" (click)="selectJob(j)"></app-job-box>
+      </div>
+      <div class="right">
+        <app-job-page [selectedJob]="selectedJob" [selectedReq]="selectedReq"></app-job-page>
+      </div>
+    </div>
+  </div>
 </div>

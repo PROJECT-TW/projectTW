@@ -54,4 +54,10 @@ export class AuthService {
       this.login({email:localstorgeUser.email,password:localstorgeUser.password});
     }
   }
+
+  disconnect(){
+    localStorage.removeItem('user')
+    this.user = null;
+    this.router.navigate(['/authentication'])
+  }
 }

@@ -1,0 +1,29 @@
+<div class="first-row">
+    <div class="basic-info">
+        <p class="company">{{selectedJob.owner}}</p>
+        <p class="title">{{selectedJob.title}}</p>
+        <p class="location">{{selectedJob.location}}</p>
+    </div>
+    <div class="buttons">
+        <img style="width: 18px; height: 18px; cursor: pointer;"
+            [src]="isFav?'assets/icons/love2.png':'assets/icons/love.png'" alt="" (click)="addToFav()">
+        <button class="btn" (click)="apply()">Apply</button>
+    </div>
+</div>
+<br>
+<p class="subtitle" style="margin-bottom: 5px;">Description</p>
+<p class="description">{{selectedJob.description}}
+</p>
+<br>
+<div class="makeflex" style="display: flex;justify-content: space-between;">
+    <div>
+        <p class="subtitle" tyle="margin-bottom: 5px;">Requirements</p>
+        <ul>
+            <li *ngFor="let req of selectedReq">{{req}}</li>
+        </ul>
+    </div>
+    <div>
+        <p class="subtitle" tyle="margin-bottom: 5px;">Job Type</p>
+        <p>{{selectedJob.jobType}}</p>
+    </div>
+</div>

@@ -22,6 +22,8 @@ import { AccountRecruiterComponent } from './account/account-recruiter/account-r
 import { AccountApplicantComponent } from './account/account-applicant/account-applicant.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JobOfferComponent } from './shared/components/job-offer/job-offer.component';
+import { JobPageComponent } from './shared/components/job-page/job-page.component';
+import { FavouriteComponent } from './favourite/favourite.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { JobOfferComponent } from './shared/components/job-offer/job-offer.compo
     AccountRecruiterComponent,
     AccountApplicantComponent,
     JobOfferComponent,
+    JobPageComponent,
+    FavouriteComponent,
   ],
   imports: [
     BrowserModule,

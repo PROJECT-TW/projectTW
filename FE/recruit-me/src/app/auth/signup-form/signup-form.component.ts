@@ -28,7 +28,6 @@ export class SignupFormComponent implements OnInit {
       password2 : x.password2.value,
       type: x.recruiter.value?true:false
     }
-    console.log(signUpForm)
     this.authService.signUpUser(signUpForm).subscribe(
       res =>{
         console.log(res)

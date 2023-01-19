@@ -75,4 +75,8 @@ export class AccountApplicantComponent implements OnInit {
     )
   }
 
+  disconect(){
+    this.authService.disconnect();
+  }
+
 }
